@@ -51,11 +51,11 @@ export default function Projects() {
     },
     {
       id: "smarthomesystem",
-      title: "SmartHomeSystem-",
+      title: "SmartHomeSystem",
       description: "A hardware-simulated automation workspace. Implements object-oriented workflows, trigger logic, and event-driven automation rules to emulate real-world sensor communication pathways.",
       tech: ["Java", "OOP Design", "Event Automation"],
       type: "secondary",
-      github: "https://github.com/azideu/SmartHomeSystem-",
+      github: "https://github.com/azideu/SmartHomeSystem",
       fileSize: "61.0 KB",
       filePerms: "-rwxr-xr-x",
     },
@@ -128,7 +128,7 @@ export default function Projects() {
                       Featured Project
                     </span>
                   </div>
-  
+
                   {/* Editor Content Area */}
                   <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
                     <div>
@@ -139,7 +139,7 @@ export default function Projects() {
                         {featuredProjects[0].description}
                       </p>
                     </div>
-  
+
                     <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-1.5">
                         {featuredProjects[0].tech.map((t, idx) => (
@@ -177,7 +177,7 @@ export default function Projects() {
                       Featured Project
                     </span>
                   </div>
-  
+
                   {/* Editor Content Area */}
                   <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
                     <div>
@@ -188,7 +188,7 @@ export default function Projects() {
                         {featuredProjects[1].description}
                       </p>
                     </div>
-  
+
                     <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-1.5">
                         {featuredProjects[1].tech.map((t, idx) => (
@@ -234,7 +234,7 @@ export default function Projects() {
                     <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[9px] text-slate-450">
                       <span>Project File</span>
                     </div>
-                    
+
                     <div className="p-5 flex-1 flex flex-col justify-between gap-4">
                       <div>
                         <h4 className="text-sm font-semibold text-slate-200 hover:text-[#00d2ff] transition-colors mb-2 shuffle-text">
@@ -244,7 +244,7 @@ export default function Projects() {
                           {p.description}
                         </p>
                       </div>
-  
+
                       <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center">
                         <div className="flex flex-wrap gap-1">
                           {p.tech.map((t, idx) => (
