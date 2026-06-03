@@ -41,6 +41,25 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
 export default function Hero() {
   const { scrollToSection } = useActiveSection();
 
@@ -130,7 +149,7 @@ export default function Hero() {
               <span className="font-mono text-[10px]">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/addinzidane/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
@@ -138,6 +157,16 @@ export default function Hero() {
             >
               <Linkedin className="w-3.5 h-3.5" />
               <span className="font-mono text-[10px]">LinkedIn</span>
+            </a>
+            <a
+              href="https://www.instagram.com/azideu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              aria-label="Instagram Profile"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+              <span className="font-mono text-[10px]">Instagram</span>
             </a>
           </motion.div>
         </motion.div>

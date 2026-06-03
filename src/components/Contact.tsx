@@ -41,9 +41,28 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const emailAddress = "azideu.work@gmail.com";
+  const emailAddress = "addin.zidane.dev@gmail.com";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(emailAddress);
@@ -169,7 +188,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/addinzidane/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 p-4 rounded console-panel hover:border-[#00d2ff]/40 transition-colors flex items-center justify-between text-left group tilt-card"
@@ -181,7 +200,27 @@ export default function Contact() {
                 <div className="flex-1">
                   <p className="text-[9px] text-slate-555">LinkedIn</p>
                   <p className="text-xs font-bold text-slate-300 group-hover:text-[#00d2ff] transition-colors shuffle-text">
-                    Connect on LinkedIn
+                    addinzidane
+                  </p>
+                </div>
+                <ArrowUpRight className="w-3.5 h-3.5 text-slate-550 ml-auto" />
+              </div>
+            </a>
+
+            <a
+              href="https://www.instagram.com/azideu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 p-4 rounded console-panel hover:border-[#00d2ff]/40 transition-colors flex items-center justify-between text-left group tilt-card"
+            >
+              <div className="tilt-card-inner flex items-center gap-3 w-full">
+                <div className="p-2 border border-[#00d2ff]/20 text-[#00d2ff] bg-[#00d2ff]/5">
+                  <Instagram className="w-4 h-4" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[9px] text-slate-555">Instagram</p>
+                  <p className="text-xs font-bold text-slate-300 group-hover:text-[#00d2ff] transition-colors shuffle-text">
+                    @azideu
                   </p>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 text-slate-550 ml-auto" />
