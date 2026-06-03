@@ -1,0 +1,156 @@
+"use client";
+
+import { useActiveSection } from "@/context/ActiveSectionContext";
+import { motion } from "framer-motion";
+import { ChevronRight, Cpu } from "lucide-react";
+
+const Github = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+export default function Hero() {
+  const { scrollToSection } = useActiveSection();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+  } as const;
+
+  const itemVariants = {
+    hidden: { y: 15, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "tween", duration: 0.4 },
+    },
+  } as const;
+
+  return (
+    <section
+      id="hero"
+      className="snap-section flex flex-col justify-center items-center px-6 relative scroll-reveal"
+    >
+      <div className="max-w-4xl w-full z-10 font-mono text-left">
+        {/* Input Prompts */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
+        >
+          <motion.div variants={itemVariants} className="flex items-center gap-2 text-slate-500 text-sm">
+            <Cpu className="w-4 h-4 text-[#00d2ff]" />
+            <span>Systems Architecture &amp; Full-Stack Development</span>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <div className="flex items-baseline gap-2">
+              <h1 className="text-4xl md:text-7xl font-display font-bold tracking-tight text-slate-100 uppercase">
+                Hi, I&apos;m <span className="text-[#00d2ff] text-glow-violet shuffle-text">Addin.</span>
+              </h1>
+            </div>
+          </motion.div>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-sm md:text-base text-slate-350 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
+          >
+            I develop backend architectures, systems modules, and scalable web solutions. 
+            Focusing on computation logic, relational database models, and structural code performance.
+          </motion.p>
+
+          {/* Interactive buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4"
+          >
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="group px-5 py-3 rounded-lg border border-[#00d2ff] text-[#05070a] bg-[#00d2ff] font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,210,255,0.3)] hover:shadow-[0_0_25px_rgba(0,210,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span className="shuffle-text">View My Work</span>
+              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+            
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-5 py-3 rounded-lg border border-[#00d2ff]/40 hover:border-[#00d2ff] text-[#00d2ff] hover:bg-[#00d2ff]/5 font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span className="shuffle-text">Get In Touch</span>
+            </button>
+          </motion.div>
+
+          {/* Bottom links */}
+          <motion.div variants={itemVariants} className="flex items-center gap-5 mt-6 border-t border-[#00d2ff]/5 pt-6">
+            <span className="text-[9px] text-slate-600 uppercase tracking-widest font-bold">Connect:</span>
+            <a
+              href="https://github.com/azideu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-3.5 h-3.5" />
+              <span className="font-mono text-[10px]">GitHub</span>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+              <span className="font-mono text-[10px]">LinkedIn</span>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Floating scroll trigger */}
+      <div 
+        className="absolute bottom-8 flex flex-col items-center cursor-pointer text-slate-600 hover:text-[#00d2ff] transition-colors hidden md:flex"
+        onClick={() => scrollToSection("about")}
+      >
+        <span className="text-[9px] uppercase tracking-widest mb-1.5 font-mono">Scroll to Explore</span>
+        <span className="w-1.5 h-1.5 bg-[#00d2ff] animate-pulse" />
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-space-mono), monospace;
+  --font-display: var(--font-share-tech), monospace;
+  
+  --color-accent-blue: #00d2ff;
+  --color-accent-blue-dim: rgba(0, 210, 255, 0.15);
+  --color-accent-amber: #ffb000;
+  --color-accent-cyan: #00f0ff;
+  
+  --animate-cursor-blink: cursor-blink 1s steps(2, start) infinite;
+  --animate-crt-flicker: crt-flicker 0.15s infinite;
+}
+
+@keyframes cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+:root {
+  --background: #05070a;
+  --foreground: #00d2ff;
+  --border-color: rgba(0, 210, 255, 0.12);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  text-shadow: 0 0 2px rgba(0, 210, 255, 0.3);
+}
+
+/* Monospace brutalist panels */
+.console-panel {
+  background: #080d14;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.02);
+}
+
+.console-panel-glow {
+  background: #090e16;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.05), inset 0 0 20px rgba(0, 210, 255, 0.03);
+}
+
+/* Custom hide scrollbar and Snap */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* CRT Screen Effects */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 99999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 99998;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Line branch dot styling */
+.branch-dot::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 0%; /* Brutalist square dots */
+  background: #00d2ff;
+  top: 8px;
+  left: -5px;
+  box-shadow: 0 0 8px #00d2ff;
+}
+
+/* Code comments styling */
+.code-comment {
+  color: #57606a;
+}
+
+/* Document scroll container with CSS snapping on desktop */
+@media (min-width: 768px) and (min-height: 700px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    height: 100vh;
+    position: relative;
+  }
+}
+
+@media (max-width: 767px), (max-height: 699px) {
+  .snap-container {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  .snap-section {
+    min-height: 100vh;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    position: relative;
+  }
+}
+
+/* Subtle flat lift & neon border glow hover animations */
+.tilt-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform, box-shadow, border-color;
+}
+.tilt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 210, 255, 0.15), inset 0 0 15px rgba(0, 210, 255, 0.03);
+  border-color: rgba(0, 210, 255, 0.35) !important;
+}
+.tilt-card-inner {
+  /* Preserve layout wrapper compatibility */
+}
+
+/* Scroll reveals with clean fade & slide */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dynamic Navbar Scroll Progress line */
+#scroll-progress-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: #00d2ff;
+  box-shadow: 0 0 8px #00d2ff;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
