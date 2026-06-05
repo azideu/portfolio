@@ -155,7 +155,7 @@ export default function Contact() {
                   </h3>
 
                   {/* Mail launch bar */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-md">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-lg">
                     <InteractiveHoverButton
                       href={`mailto:${emailAddress}`}
                       icon={<Mail className="w-4 h-4" />}
