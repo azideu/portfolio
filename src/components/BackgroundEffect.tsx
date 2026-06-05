@@ -12,9 +12,9 @@ export default function BackgroundEffect() {
       <FlickeringGrid
         squareSize={4}
         gridGap={6}
-        flickerChance={0.3}
+        flickerChance={0.35}
         color="#00d2ff"
-        maxOpacity={0.08}
+        maxOpacity={0.25}
         className="absolute inset-0 w-full h-full"
         style={{
           maskImage: "radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%)",
