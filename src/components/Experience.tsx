@@ -11,12 +11,12 @@ export default function Experience() {
       period: "ONGOING",
       description: "Rigorous curriculum focused on software engineering, object-oriented design, database design, and systems logic, complemented by specialized elective tracks in cybersecurity and visual programming.",
       courses: [
-        "Web & Mobile Applications (CSC264)",
-        "Database Design (ICT200)",
-        "Information System Development (ISP250)",
-        "Data Communication & Networking (ITT300)",
-        "Computer Security & Cybersecurity (ITT320)",
-        "Data Structures & Algorithms (CSC248)",
+        "Web & Mobile Applications",
+        "Database Design",
+        "Information System Development",
+        "Data Communication & Networking",
+        "Computer Security & Cybersecurity",
+        "Data Structures & Algorithms",
       ],
       highlights: [
         "Developed 'UiTM STEP' freelance marketplace platform using PHP and MySQL for CSC264 & ISP250 project.",
