@@ -162,7 +162,7 @@ export default function Contact() {
                       arrowIcon={<ArrowUpRight className="w-3.5 h-3.5" />}
                       className="flex-1 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
                     >
-                      Send Email
+                      addin.zidane.dev@gmail.com
                     </InteractiveHoverButton>
 
                     <InteractiveHoverButton
