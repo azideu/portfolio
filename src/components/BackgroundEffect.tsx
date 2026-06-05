@@ -14,7 +14,7 @@ export default function BackgroundEffect() {
         gridGap={6}
         flickerChance={0.35}
         color="#00d2ff"
-        maxOpacity={0.25}
+        maxOpacity={0.125}
         className="absolute inset-0 w-full h-full"
         style={{
           maskImage: "radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%)",

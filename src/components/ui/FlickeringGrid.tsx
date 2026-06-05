@@ -95,10 +95,10 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
           const opacity = squares[i * rows + j];
           ctx.fillStyle = `${memoizedColor}${opacity})`;
           ctx.fillRect(
-            i * (squareSize + gridGap) * dpr,
-            j * (squareSize + gridGap) * dpr,
-            squareSize * dpr,
-            squareSize * dpr
+            Math.floor(i * (squareSize + gridGap) * dpr),
+            Math.floor(j * (squareSize + gridGap) * dpr),
+            Math.floor(squareSize * dpr),
+            Math.floor(squareSize * dpr)
           );
         }
       }
