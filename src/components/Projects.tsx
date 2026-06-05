@@ -117,10 +117,10 @@ export default function Projects() {
         >
           {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* Project 1 (Left Column - occupies 7 cols) */}
-            <motion.div variants={cardVariants} className="lg:col-span-7 flex flex-col">
+            {/* Project 1 (Left Column - occupies 6 cols) */}
+            <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
               <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
-                <div className="tilt-card-inner">
+                <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
                   <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
                     <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -166,10 +166,10 @@ export default function Projects() {
               </div>
             </motion.div>
 
-            {/* Project 2 (Right Column - occupies 5 cols) */}
-            <motion.div variants={cardVariants} className="lg:col-span-5 flex flex-col">
+            {/* Project 2 (Right Column - occupies 6 cols) */}
+            <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
               <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
-                <div className="tilt-card-inner">
+                <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
                   <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
                     <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -228,9 +228,9 @@ export default function Projects() {
                 <motion.div
                   key={p.id}
                   variants={cardVariants}
-                  className="console-panel rounded-lg overflow-hidden flex flex-col hover:border-[#00d2ff]/40 transition-colors tilt-card"
+                  className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card"
                 >
-                  <div className="tilt-card-inner">
+                  <div className="tilt-card-inner h-full flex flex-col">
                     <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[9px] text-slate-450">
                       <span>Project File</span>
                     </div>
