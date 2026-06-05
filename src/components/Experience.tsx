@@ -19,6 +19,7 @@ export default function Experience() {
         "Data Structures & Algorithms",
       ],
       highlights: [
+        "Academic Excellence: Maintained a Cumulative GPA (CGPA) of 3.75.",
         "Developed 'UiTM STEP' freelance marketplace platform using PHP and MySQL for CSC264 & ISP250 project.",
         "Built a dual-interface Smart Home simulation utilizing Java Swing GUI and OOP design for CSC186.",
         "Engineered 'EcoRevive' E-Waste inventory tracking desktop application with JavaFX and Maven.",
