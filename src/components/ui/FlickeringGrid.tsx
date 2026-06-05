@@ -26,7 +26,6 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
   const memoizedColor = useMemo(() => {
@@ -113,7 +112,6 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     const ctx = canvas?.getContext("2d") ?? null;
     let animationFrameId: number | null = null;
     let resizeObserver: ResizeObserver | null = null;
-    let intersectionObserver: IntersectionObserver | null = null;
     let gridParams: ReturnType<typeof setupCanvas> | null = null;
 
     if (canvas && container && ctx) {
@@ -128,7 +126,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
       let lastTime = 0;
       const animate = (time: number) => {
-        if (!isInView || !gridParams) return;
+        if (!gridParams) return;
 
         const deltaTime = (time - lastTime) / 1000;
         lastTime = time;
@@ -151,17 +149,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       });
       resizeObserver.observe(container);
 
-      intersectionObserver = new IntersectionObserver(
-        ([entry]) => {
-          setIsInView(entry.isIntersecting);
-        },
-        { threshold: 0 }
-      );
-      intersectionObserver.observe(canvas);
-
-      if (isInView) {
-        animationFrameId = requestAnimationFrame(animate);
-      }
+      animationFrameId = requestAnimationFrame(animate);
     }
 
     return () => {
@@ -171,11 +159,8 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       if (resizeObserver) {
         resizeObserver.disconnect();
       }
-      if (intersectionObserver) {
-        intersectionObserver.disconnect();
-      }
     };
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
+  }, [setupCanvas, updateSquares, drawGrid, width, height]);
 
   return (
     <div

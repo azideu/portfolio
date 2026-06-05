@@ -28,9 +28,9 @@ export default function BackgroundEffect() {
         <FlickeringGrid
           squareSize={1.5}
           gridGap={24}
-          flickerChance={0.12}
+          flickerChance={0.4}
           color="#00d2ff"
-          maxOpacity={0.12}
+          maxOpacity={0.15}
           className="w-full h-full"
         />
       </div>
