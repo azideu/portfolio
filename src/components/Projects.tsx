@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FolderDot, Server, Terminal, ArrowUpRight } from "lucide-react";
+import { BorderBeam } from "@/components/ui/BorderBeam";
 
 interface Project {
   id: string;
@@ -119,7 +120,8 @@ export default function Projects() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             {/* Project 1 (Left Column - occupies 6 cols) */}
             <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
-              <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
+              <div className="console-panel relative rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
+                <BorderBeam size={160} duration={8} borderWidth={1.5} colorFrom="#00d2ff" colorTo="transparent" />
                 <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
                   <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
@@ -168,7 +170,8 @@ export default function Projects() {
 
             {/* Project 2 (Right Column - occupies 6 cols) */}
             <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
-              <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
+              <div className="console-panel relative rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
+                <BorderBeam size={160} duration={8} borderWidth={1.5} colorFrom="#00d2ff" colorTo="transparent" delay={4} />
                 <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
                   <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
