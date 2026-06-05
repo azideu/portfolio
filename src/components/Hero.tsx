@@ -96,7 +96,7 @@ export default function Hero() {
         >
           <motion.div variants={itemVariants} className="flex items-center gap-2 text-slate-500 text-sm">
             <Cpu className="w-4 h-4 text-[#00d2ff]" />
-            <span>Systems Architecture &amp; Full-Stack Development</span>
+            <span>Junior Full-Stack Web Developer | Seeking Internships &amp; Junior Roles</span>
           </motion.div>
 
           <motion.div variants={itemVariants}>
@@ -111,8 +111,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-sm md:text-base text-slate-350 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
           >
-            I develop backend architectures, systems modules, and scalable web solutions. 
-            Focusing on computation logic, relational database models, and structural code performance.
+            I build responsive frontend interfaces, robust server-side APIs, and structured database systems. 
+            Specializing in modern JavaScript/React frameworks and seeking junior development positions or internships.
           </motion.p>
 
           {/* Interactive buttons */}

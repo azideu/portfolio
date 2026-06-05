@@ -91,12 +91,10 @@ export default function About() {
                 </div>
                 <div className="p-6 text-sm text-slate-350 leading-relaxed font-light flex flex-col gap-4">
                   <p>
-                    I am a software engineering enthusiast with a solid academic base in Computer Science. 
-                    My focus lies in building clean systems programming, structured database design, and robust backend logic.
+                    I am an aspiring full-stack developer with a solid computer science foundation, currently seeking a web development internship or junior role. My core focus is on building responsive user interfaces, writing clean server-side logic, and structuring relational database systems.
                   </p>
                   <p>
-                    I enjoy bridging the gap between performance-oriented systems and sleek, modular frontends, 
-                    always prioritizing readability, semantic standards, and optimal user experience.
+                    I enjoy bridging the gap between user-centered designs and performant backend architectures, utilizing modern tools like React, Next.js, Node.js, and PHP to solve real-world problems.
                   </p>
                 </div>
               </div>
