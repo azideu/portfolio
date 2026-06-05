@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import { InteractiveHoverButton } from "@/components/ui/InteractiveHoverButton";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -129,33 +130,24 @@ export default function Contact() {
   
                   {/* Mail launch bar */}
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-md mt-2">
-                    <a
+                    <InteractiveHoverButton
                       href={`mailto:${emailAddress}`}
-                      className="flex-1 px-4 py-3 rounded bg-slate-900 border border-[#00d2ff]/15 hover:border-[#00d2ff]/40 text-[#00d2ff] text-xs font-mono flex items-center justify-between gap-3 transition-colors group"
+                      icon={<Mail className="w-4 h-4" />}
+                      arrowIcon={<ArrowUpRight className="w-3.5 h-3.5" />}
+                      className="flex-1 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <Mail className="w-4 h-4 text-[#00d2ff]" />
-                        <span className="shuffle-text">Send Email</span>
-                      </div>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#00d2ff] transition-colors" />
-                    </a>
+                      Send Email
+                    </InteractiveHoverButton>
   
-                    <button
+                    <InteractiveHoverButton
                       onClick={copyToClipboard}
-                      className="px-4 py-3 rounded border border-[#00d2ff]/20 bg-[#00d2ff]/5 text-[#00d2ff] text-xs font-semibold hover:bg-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex items-center justify-center gap-1.5"
+                      icon={copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      arrowIcon={copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      shuffle={!copied}
+                      className="hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
                     >
-                      {copied ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>[ COPIED ]</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3.5 h-3.5" />
-                          <span className="shuffle-text">[ COPY_EMAIL ]</span>
-                        </>
-                      )}
-                    </button>
+                      {copied ? "[ COPIED ]" : "[ COPY_EMAIL ]"}
+                    </InteractiveHoverButton>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 import { useActiveSection } from "@/context/ActiveSectionContext";
 import { motion } from "framer-motion";
 import { ChevronRight, Cpu } from "lucide-react";
+import { InteractiveHoverButton } from "@/components/ui/InteractiveHoverButton";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -119,20 +120,20 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4"
           >
-            <button
+            <InteractiveHoverButton
               onClick={() => scrollToSection("projects")}
-              className="group px-5 py-3 rounded-lg border border-[#00d2ff] text-[#05070a] bg-[#00d2ff] font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,210,255,0.3)] hover:shadow-[0_0_25px_rgba(0,210,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+              arrowIcon={<ChevronRight className="w-3.5 h-3.5" />}
+              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.15)] hover:shadow-[0_0_25px_rgba(0,210,255,0.3)] transition-all"
             >
-              <span className="shuffle-text">View My Work</span>
-              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+              View My Work
+            </InteractiveHoverButton>
             
-            <button
+            <InteractiveHoverButton
               onClick={() => scrollToSection("contact")}
-              className="px-5 py-3 rounded-lg border border-[#00d2ff]/40 hover:border-[#00d2ff] text-[#00d2ff] hover:bg-[#00d2ff]/5 font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-300"
+              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
             >
-              <span className="shuffle-text">Get In Touch</span>
-            </button>
+              Get In Touch
+            </InteractiveHoverButton>
           </motion.div>
 
           {/* Bottom links */}
