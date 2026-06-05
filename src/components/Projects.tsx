@@ -113,107 +113,64 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col gap-10"
+          className="flex flex-col gap-8"
         >
           {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* Project 1 (Left Column - occupies 6 cols) */}
-            <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
-              <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
-                <div className="tilt-card-inner h-full flex flex-col">
-                  {/* IDE Tab Header */}
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                      <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
-                      Featured Project
-                    </span>
-                  </div>
-
-                  {/* Editor Content Area */}
-                  <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
-                    <div>
-                      <h3 className="text-xl md:text-3xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
-                        {featuredProjects[0].title}
-                      </h3>
-                      <p className="text-slate-350 text-sm leading-relaxed font-light">
-                        {featuredProjects[0].description}
-                      </p>
+            {featuredProjects.map((p) => (
+              <motion.div
+                key={p.id}
+                variants={cardVariants}
+                className="col-span-1 lg:col-span-6 flex flex-col"
+              >
+                <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+                  <div className="tilt-card-inner h-full flex flex-col">
+                    {/* IDE Tab Header */}
+                    <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                      <span className="flex items-center gap-1.5">
+                        <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
+                        Featured: {p.title}
+                      </span>
+                      <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize} | {p.filePerms}</span>
                     </div>
 
-                    <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div className="flex flex-wrap gap-1.5">
-                        {featuredProjects[0].tech.map((t, idx) => (
-                          <span
-                            key={idx}
-                            className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
-                          >
-                            {t}
-                          </span>
-                        ))}
+                    {/* Editor Content Area */}
+                    <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-6">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
+                          {p.title}
+                        </h3>
+                        <p className="text-slate-350 text-xs md:text-sm leading-relaxed font-light">
+                          {p.description}
+                        </p>
                       </div>
-                      <a
-                        href={featuredProjects[0].github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
-                      >
-                        <span className="shuffle-text">View on GitHub</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
+
+                      <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div className="flex flex-wrap gap-1.5">
+                          {p.tech.map((t, idx) => (
+                            <span
+                              key={idx}
+                              className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
+                        >
+                          <span className="shuffle-text">View on GitHub</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Project 2 (Right Column - occupies 6 cols) */}
-            <motion.div variants={cardVariants} className="lg:col-span-6 flex flex-col">
-              <div className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card">
-                <div className="tilt-card-inner h-full flex flex-col">
-                  {/* IDE Tab Header */}
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                      <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
-                      Featured Project
-                    </span>
-                  </div>
-
-                  {/* Editor Content Area */}
-                  <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
-                        {featuredProjects[1].title}
-                      </h3>
-                      <p className="text-slate-350 text-xs md:text-sm leading-relaxed font-light">
-                        {featuredProjects[1].description}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div className="flex flex-wrap gap-1.5">
-                        {featuredProjects[1].tech.map((t, idx) => (
-                          <span
-                            key={idx}
-                            className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <a
-                        href={featuredProjects[1].github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
-                      >
-                        <span className="shuffle-text">View on GitHub</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
 
           {/* Secondary Projects Section */}
@@ -223,34 +180,35 @@ export default function Projects() {
               Other Projects
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {secondaryProjects.map((p) => (
                 <motion.div
                   key={p.id}
                   variants={cardVariants}
-                  className="console-panel rounded-lg overflow-hidden flex flex-col h-full hover:border-[#00d2ff]/40 transition-colors tilt-card"
+                  className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col h-full tilt-card"
                 >
                   <div className="tilt-card-inner h-full flex flex-col">
-                    <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[9px] text-slate-450">
-                      <span>Project File</span>
+                    <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                      <span className="flex items-center gap-1.5">
+                        <FolderDot className="w-3.5 h-3.5 text-[#00d2ff]" />
+                        {p.title}
+                      </span>
+                      <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize}</span>
                     </div>
 
-                    <div className="p-5 flex-1 flex flex-col justify-between gap-4">
+                    <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-4">
                       <div>
-                        <h4 className="text-sm font-semibold text-slate-200 hover:text-[#00d2ff] transition-colors mb-2 shuffle-text">
-                          {p.title}
-                        </h4>
                         <p className="text-slate-400 text-xs font-light leading-relaxed">
                           {p.description}
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center">
+                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center mt-auto">
                         <div className="flex flex-wrap gap-1">
                           {p.tech.map((t, idx) => (
                             <span
                               key={idx}
-                              className="text-[9px] font-mono text-slate-300 bg-[#00d2ff]/5 px-1.5 py-0.5"
+                              className="text-[9px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-1.5 py-0.5 rounded-sm"
                             >
                               {t}
                             </span>

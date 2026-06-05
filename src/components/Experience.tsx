@@ -80,22 +80,33 @@ export default function Experience() {
               </div>
 
               {/* Console Card */}
-              <div className="console-panel p-6 rounded-lg transition-all duration-300 group-hover:border-[#00d2ff]/30 tilt-card">
-                <div className="tilt-card-inner">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                    <div>
-                      <h3 className="text-lg md:text-xl font-display font-bold text-slate-200 group-hover:text-[#00d2ff] transition-colors shuffle-text">
-                        {item.degree}
-                      </h3>
-                      <p className="text-xs text-slate-400">
-                        {item.institution}
-                      </p>
-                    </div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00d2ff]/5 border border-[#00d2ff]/20 rounded text-[10px] text-[#00d2ff] font-mono self-start md:self-center font-bold">
-                      <Calendar className="w-3 h-3" />
-                      <span>{item.period}</span>
-                    </div>
+              <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col tilt-card">
+                <div className="tilt-card-inner h-full flex flex-col">
+                  {/* IDE Tab Header */}
+                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      Education Log
+                    </span>
+                    <span className="text-[#00d2ff]/40 font-normal lowercase">{item.commitId}</span>
                   </div>
+
+                  {/* Content */}
+                  <div className="p-5 md:p-6 flex-1">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                      <div>
+                        <h3 className="text-lg md:text-xl font-display font-bold text-slate-200 group-hover:text-[#00d2ff] transition-colors shuffle-text">
+                          {item.degree}
+                        </h3>
+                        <p className="text-xs text-slate-400">
+                          {item.institution}
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00d2ff]/5 border border-[#00d2ff]/20 rounded text-[10px] text-[#00d2ff] font-mono self-start md:self-center font-bold">
+                        <Calendar className="w-3 h-3" />
+                        <span>{item.period}</span>
+                      </div>
+                    </div>
 
                   <p className="text-slate-350 text-xs md:text-sm font-light leading-relaxed mb-6">
                     {item.description}
@@ -136,7 +147,8 @@ export default function Experience() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
           ))}
         </motion.div>
       </div>

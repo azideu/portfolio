@@ -88,6 +88,30 @@ export default function Contact() {
     },
   } as const;
 
+  const socials = [
+    {
+      name: "GitHub",
+      url: "https://github.com/azideu/",
+      handle: "azideu",
+      icon: <Github className="w-3.5 h-3.5 text-[#00d2ff]" />,
+      bodyIcon: <Github className="w-5 h-5" />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/addinzidane/",
+      handle: "addinzidane",
+      icon: <Linkedin className="w-3.5 h-3.5 text-[#00d2ff]" />,
+      bodyIcon: <Linkedin className="w-5 h-5" />,
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/azideu/",
+      handle: "@azideu",
+      icon: <Instagram className="w-3.5 h-3.5 text-[#00d2ff]" />,
+      bodyIcon: <Instagram className="w-5 h-5" />,
+    },
+  ];
+
   return (
     <section
       id="contact"
@@ -113,23 +137,25 @@ export default function Contact() {
         >
           {/* Brutalist Console Terminal box */}
           <motion.div variants={cardVariants} className="w-full max-w-2xl">
-            <div className="console-panel rounded-lg overflow-hidden shadow-2xl tilt-card">
-              <div className="tilt-card-inner">
+            <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col tilt-card">
+              <div className="tilt-card-inner h-full flex flex-col">
                 {/* Tab Header */}
-                <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">
-                  <span className="text-[10px] text-slate-450 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    Contact Info
+                <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                  <span className="flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5 text-[#00d2ff]" />
+                    Contact Directory
                   </span>
+                  <span className="text-[#00d2ff]/40 font-normal lowercase">status: open</span>
                 </div>
-  
+
                 {/* Panel Content */}
-                <div className="p-8 md:p-10 flex flex-col items-center gap-6 text-center">
-                  <h3 className="text-sm md:text-base text-slate-350 leading-relaxed max-w-md">
+                <div className="p-5 md:p-6 flex flex-col items-center gap-6 text-center justify-center flex-1">
+                  <h3 className="text-xs md:text-sm text-slate-350 leading-relaxed max-w-md">
                     Feel free to reach out via email or connect on social media.
                   </h3>
-  
+
                   {/* Mail launch bar */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-md mt-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-md">
                     <InteractiveHoverButton
                       href={`mailto:${emailAddress}`}
                       icon={<Mail className="w-4 h-4" />}
@@ -138,7 +164,7 @@ export default function Contact() {
                     >
                       Send Email
                     </InteractiveHoverButton>
-  
+
                     <InteractiveHoverButton
                       onClick={copyToClipboard}
                       icon={copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -157,67 +183,41 @@ export default function Contact() {
           {/* Social connections in terminal rows */}
           <motion.div
             variants={cardVariants}
-            className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl justify-center"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-2xl justify-center"
           >
-            <a
-              href="https://github.com/azideu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 p-4 rounded console-panel hover:border-[#00d2ff]/40 transition-colors flex items-center justify-between text-left group tilt-card"
-            >
-              <div className="tilt-card-inner flex items-center gap-3 w-full">
-                <div className="p-2 border border-[#00d2ff]/20 text-[#00d2ff] bg-[#00d2ff]/5">
-                  <Github className="w-4 h-4" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[9px] text-slate-555">GitHub</p>
-                  <p className="text-xs font-bold text-slate-300 group-hover:text-[#00d2ff] transition-colors shuffle-text">
-                    github.com/azideu
-                  </p>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-550 ml-auto" />
-              </div>
-            </a>
+            {socials.map((social, idx) => (
+              <a
+                key={idx}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col group tilt-card"
+              >
+                <div className="tilt-card-inner h-full flex flex-col">
+                  {/* IDE Tab Header */}
+                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5">
+                      {social.icon}
+                      {social.name}
+                    </span>
+                    <span className="text-[#00d2ff]/40 font-normal lowercase">link</span>
+                  </div>
 
-            <a
-              href="https://www.linkedin.com/in/addinzidane/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 p-4 rounded console-panel hover:border-[#00d2ff]/40 transition-colors flex items-center justify-between text-left group tilt-card"
-            >
-              <div className="tilt-card-inner flex items-center gap-3 w-full">
-                <div className="p-2 border border-[#00d2ff]/20 text-[#00d2ff] bg-[#00d2ff]/5">
-                  <Linkedin className="w-4 h-4" />
+                  {/* Card Body */}
+                  <div className="p-4 flex flex-row items-center gap-4 flex-1 text-left">
+                    <div className="p-2 border border-[#00d2ff]/20 text-[#00d2ff] bg-[#00d2ff]/5 rounded transition-colors group-hover:border-[#00d2ff]/40 group-hover:bg-[#00d2ff]/10">
+                      {social.bodyIcon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-slate-200 group-hover:text-[#00d2ff] transition-colors truncate">
+                        {social.handle}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#00d2ff] transition-colors ml-auto flex-shrink-0" />
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="text-[9px] text-slate-555">LinkedIn</p>
-                  <p className="text-xs font-bold text-slate-300 group-hover:text-[#00d2ff] transition-colors shuffle-text">
-                    addinzidane
-                  </p>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-550 ml-auto" />
-              </div>
-            </a>
-
-            <a
-              href="https://www.instagram.com/azideu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 p-4 rounded console-panel hover:border-[#00d2ff]/40 transition-colors flex items-center justify-between text-left group tilt-card"
-            >
-              <div className="tilt-card-inner flex items-center gap-3 w-full">
-                <div className="p-2 border border-[#00d2ff]/20 text-[#00d2ff] bg-[#00d2ff]/5">
-                  <Instagram className="w-4 h-4" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-[9px] text-slate-555">Instagram</p>
-                  <p className="text-xs font-bold text-slate-300 group-hover:text-[#00d2ff] transition-colors shuffle-text">
-                    @azideu
-                  </p>
-                </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-550 ml-auto" />
-              </div>
-            </a>
+              </a>
+            ))}
           </motion.div>
         </motion.div>
       </div>

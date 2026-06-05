@@ -14,14 +14,16 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+
+
 export const metadata: Metadata = {
-  title: "Addin | Systems Architect & Software Engineer",
-  description: "Computer Science console portfolio of Addin. Specializing in high-performance backends, system utilities, and full-stack software development.",
-  authors: [{ name: "Addin" }],
-  keywords: ["software engineer", "computer science", "systems developer", "backend", "developer portfolio"],
+  title: "Addin Zidane | Software Engineer & Full-Stack Developer",
+  description: "Software engineer and full-stack developer portfolio of Addin Zidane. Specializing in responsive React/Next.js frontends, backend APIs, Java desktop applications, and relational databases.",
+  authors: [{ name: "Addin Zidane" }],
+  keywords: ["software engineer", "full-stack developer", "junior developer", "react", "nextjs", "java", "php", "developer portfolio"],
   openGraph: {
-    title: "Addin | Systems Architect & Software Engineer",
-    description: "Terminal-styled developer workspace displaying computational architecture and systems projects.",
+    title: "Addin Zidane | Software Engineer & Full-Stack Developer",
+    description: "Software engineer and full-stack developer portfolio workspace displaying software projects, skills, and credentials.",
     type: "website",
     locale: "en_US",
   },

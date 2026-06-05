@@ -94,15 +94,16 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col gap-6"
         >
+
           <motion.div variants={itemVariants} className="flex items-center gap-2 text-slate-500 text-sm">
             <Cpu className="w-4 h-4 text-[#00d2ff]" />
-            <span>Junior Full-Stack Web Developer | Seeking Internships &amp; Junior Roles</span>
+            <span>Software Engineer | Full-Stack Developer | Seeking Internships</span>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <div className="flex items-baseline gap-2">
               <h1 className="text-4xl md:text-7xl font-display font-bold tracking-tight text-slate-100 uppercase">
-                Hi, I&apos;m <span className="text-[#00d2ff] text-glow-violet shuffle-text">Addin.</span>
+                Hi, I&apos;m <span className="text-[#00d2ff] text-glow-violet shuffle-text">Addin Zidane.</span>
               </h1>
             </div>
           </motion.div>
@@ -111,8 +112,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-sm md:text-base text-slate-350 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
           >
-            I build responsive frontend interfaces, robust server-side APIs, and structured database systems. 
-            Specializing in modern JavaScript/React frameworks and seeking junior development positions or internships.
+            I build responsive web interfaces, robust backend APIs, and desktop systems.
+            Specializing in Java, PHP, JavaScript, and database design, and seeking software engineering internships or junior roles.
           </motion.p>
 
           {/* Interactive buttons */}
@@ -127,7 +128,7 @@ export default function Hero() {
             >
               View My Work
             </InteractiveHoverButton>
-            
+
             <InteractiveHoverButton
               onClick={() => scrollToSection("contact")}
               className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
@@ -174,7 +175,7 @@ export default function Hero() {
       </div>
 
       {/* Floating scroll trigger */}
-      <div 
+      <div
         className="absolute bottom-8 flex flex-col items-center cursor-pointer text-slate-600 hover:text-[#00d2ff] transition-colors hidden md:flex"
         onClick={() => scrollToSection("about")}
       >
