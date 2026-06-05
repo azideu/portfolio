@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { InteractiveHoverButton } from "@/components/ui/InteractiveHoverButton";
-import { BorderBeam } from "@/components/ui/BorderBeam";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -114,8 +113,7 @@ export default function Contact() {
         >
           {/* Brutalist Console Terminal box */}
           <motion.div variants={cardVariants} className="w-full max-w-2xl">
-            <div className="console-panel relative rounded-lg overflow-hidden shadow-2xl tilt-card">
-              <BorderBeam size={220} duration={12} borderWidth={1.5} colorFrom="#00d2ff" colorTo="transparent" />
+            <div className="console-panel rounded-lg overflow-hidden shadow-2xl tilt-card">
               <div className="tilt-card-inner">
                 {/* Tab Header */}
                 <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between">

@@ -1,7 +1,5 @@
 "use client";
 
-import { FlickeringGrid } from "@/components/ui/FlickeringGrid";
-
 export default function BackgroundEffect() {
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none crt-overlay">
@@ -14,20 +12,6 @@ export default function BackgroundEffect() {
         style={{
           maskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 60%, transparent 100%)",
           WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 60%, transparent 100%)",
-        }}
-      />
-
-      {/* Flickering Grid CRT Simulation */}
-      <FlickeringGrid
-        className="absolute inset-0"
-        squareSize={2}
-        gridGap={7}
-        flickerChance={0.12}
-        color="rgb(0, 210, 255)"
-        maxOpacity={0.08}
-        style={{
-          maskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 50%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 50%, #000 50%, transparent 100%)",
         }}
       />
 
