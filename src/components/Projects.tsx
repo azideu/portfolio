@@ -20,7 +20,7 @@ export default function Projects() {
     {
       id: "uitm-step",
       title: "uitm-step",
-      description: "A collaborative web platform developed for StepUp! featuring a secured PHP backend and relational MySQL database structure. Focuses on secure user authentication workflows, database migrations, and clean cloud deployment configurations.",
+      description: "A web-based freelance marketplace platform developed for UiTM students to showcase skills and secure project collaborations, featuring a custom PHP backend, MySQL relational database, and user authentication workflows.",
       tech: ["PHP", "MySQL", "Tailwind CSS", "Apache"],
       role: "CSC264 & ISP250 Group Project",
       type: "featured",
@@ -31,8 +31,8 @@ export default function Projects() {
     {
       id: "mainichi",
       title: "Mainichi",
-      description: "A sleek, modern daily utility and productivity web application. Built with high-fidelity UI design, reactive javascript controls, and modular logic for scale. Highlights a Node.js/Express.js API architecture and optimal state management.",
-      tech: ["JavaScript", "Node.js", "Express.js", "CSS Grid"],
+      description: "A mobile-first Japanese language learning platform featuring tactile 3D elements, smooth animations, and an SRS flashcard system for vocabulary/grammar mastery. Built with a React frontend and Node.js/Express/MySQL backend.",
+      tech: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS"],
       role: "Personal Web Application",
       type: "featured",
       github: "https://github.com/azideu/Mainichi",
@@ -42,8 +42,8 @@ export default function Projects() {
     {
       id: "ecorevive",
       title: "EcoRevive",
-      description: "A Java-based application centered on sustainability metrics tracking and environmental solutions. Fully implements object-oriented design principles, structured memory handling, and robust CLI data analytics.",
-      tech: ["Java", "OOP", "Systems Logic", "Data Structs"],
+      description: "A JavaFX desktop application designed to log, manage, and monitor electronic waste (E-Waste) recycling, featuring a custom dark-themed GUI, live analytical charts, queue management, and CSV data export.",
+      tech: ["Java", "JavaFX", "CSS", "Maven"],
       type: "secondary",
       github: "https://github.com/azideu/EcoRevive",
       fileSize: "44.1 KB",
@@ -52,8 +52,8 @@ export default function Projects() {
     {
       id: "smarthomesystem",
       title: "SmartHomeSystem",
-      description: "A hardware-simulated automation workspace. Implements object-oriented workflows, trigger logic, and event-driven automation rules to emulate real-world sensor communication pathways.",
-      tech: ["Java", "OOP Design", "Event Automation"],
+      description: "A Java-based smart home environment simulation allowing control of devices like lights and thermostats, featuring user authentication, device logging, and a dual Java Swing GUI / terminal CLI interface.",
+      tech: ["Java", "Java Swing", "OOP Design"],
       type: "secondary",
       github: "https://github.com/azideu/SmartHomeSystem",
       fileSize: "61.0 KB",
@@ -62,7 +62,7 @@ export default function Projects() {
     {
       id: "framr",
       title: "framr",
-      description: "A premium client-side web application designed for photographers to format images with professional gallery-style matte frames and borders. Preserves 100% of image dimensions during export via an offscreen HTML5 canvas solver.",
+      description: "A premium client-side web application for photographers to format images with professional gallery-style matte frames and borders. Preserves 100% of image dimensions during export via an offscreen HTML5 canvas solver.",
       tech: ["JavaScript", "HTML5 Canvas", "CSS Variables", "GitHub Actions"],
       type: "secondary",
       github: "https://github.com/azideu/framr",
