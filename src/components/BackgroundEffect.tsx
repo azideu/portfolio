@@ -12,13 +12,13 @@ export default function BackgroundEffect() {
       <FlickeringGrid
         squareSize={4}
         gridGap={6}
-        flickerChance={0.35}
+        flickerChance={0.1}
         color="#00d2ff"
-        maxOpacity={0.125}
+        maxOpacity={0.5}
         className="absolute inset-0 w-full h-full"
         style={{
-          maskImage: "radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%)",
+          maskImage: "radial-gradient(circle at center, #000 20%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(circle at center, #000 20%, transparent 80%)",
         }}
       />
 
