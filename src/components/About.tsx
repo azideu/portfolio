@@ -97,7 +97,7 @@ export default function About() {
                   </span>
                   <span className="text-[#00d2ff]/40 font-normal">read_time: 1min</span>
                 </div>
-                <div className="p-5 md:p-6 text-xs md:text-sm text-slate-350 leading-relaxed font-light flex flex-col gap-4 flex-1 justify-center">
+                <div className="p-5 md:p-6 text-xs md:text-sm text-slate-100 leading-relaxed font-light flex flex-col gap-4 flex-1 justify-center">
                   <p>
                     I am an aspiring software engineer with a solid computer science foundation, seeking developer internships or junior roles. My core focus is on building responsive web interfaces, writing clean backend logic, and designing relational database systems across both web and desktop environments.
                   </p>
@@ -127,7 +127,7 @@ export default function About() {
                   <div className="flex flex-col gap-3 font-mono text-xs">
                     {languages.map((lang, index) => (
                       <div key={index} className="flex justify-between items-center border-b border-[#00d2ff]/5 pb-2 last:border-0 last:pb-0">
-                        <span className="text-slate-200">{lang.name}</span>
+                        <span className="text-slate-100">{lang.name}</span>
                         <span className="text-[#00d2ff] font-mono font-bold bg-[#00d2ff]/5 border border-[#00d2ff]/20 px-2 py-0.5 rounded">
                           {lang.level}
                         </span>

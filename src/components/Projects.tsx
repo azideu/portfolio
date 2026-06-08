@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FolderDot, Server, Terminal, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { FolderDot, Server, Terminal, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Project {
   id: string;
@@ -13,6 +14,196 @@ interface Project {
   github: string;
   fileSize: string;
   filePerms: string;
+  images?: string[];
+}
+
+interface FeaturedProjectCardProps {
+  project: Project;
+  cardVariants: any;
+}
+
+function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps) {
+  const [[activeImageIndex, direction], setActiveImageIndex] = useState([0, 0]);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!project.images) return;
+    setActiveImageIndex(([prevIndex, prevDir]) => [
+      (prevIndex + 1) % project.images!.length,
+      1
+    ]);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!project.images) return;
+    setActiveImageIndex(([prevIndex, prevDir]) => [
+      (prevIndex - 1 + project.images!.length) % project.images!.length,
+      -1
+    ]);
+  };
+
+  const setIndex = (idx: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveImageIndex(([prevIndex, prevDir]) => [
+      idx,
+      idx > prevIndex ? 1 : -1
+    ]);
+  };
+
+  const slideVariants: Variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : direction < 0 ? "-100%" : 0,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: "tween", ease: "easeInOut", duration: 0.4 },
+        opacity: { duration: 0.3 }
+      }
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? "100%" : direction > 0 ? "-100%" : 0,
+      opacity: 0,
+      transition: {
+        x: { type: "tween", ease: "easeInOut", duration: 0.4 },
+        opacity: { duration: 0.3 }
+      }
+    })
+  };
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      className="col-span-1 lg:col-span-6 flex flex-col"
+    >
+      <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+        <div className="tilt-card-inner h-full flex flex-col">
+          {/* IDE Tab Header */}
+          <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+            <span className="flex items-center gap-1.5">
+              <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
+              Featured: {project.title}
+            </span>
+            <span className="text-[#00d2ff]/40 font-normal lowercase">
+              {project.fileSize} | {project.filePerms}
+            </span>
+          </div>
+
+          {/* Editor Content Area */}
+          <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-6">
+            <div>
+              {/* Carousel if images are present */}
+              {project.images && project.images.length > 0 && (
+                <div className="relative w-full aspect-[16/10] mb-5 bg-[#080d14] border border-[#00d2ff]/10 rounded overflow-hidden group/carousel flex flex-col">
+                  {/* Browser Tab Header */}
+                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-3 py-1.5 flex items-center justify-between">
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ef4444]/60" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#eab308]/60" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]/60" />
+                    </div>
+                    <div className="flex-1 mx-4 bg-[#05070a] border border-[#00d2ff]/10 rounded px-2.5 py-0.5 text-[8px] text-slate-500 font-mono flex items-center justify-between max-w-[200px] md:max-w-[240px]">
+                      <span className="truncate">localhost:3000/{project.id}</span>
+                      <span className="text-[#00d2ff]/30 text-[7px] flex-shrink-0 ml-1 select-none">[preview]</span>
+                    </div>
+                    <div className="w-6 flex-shrink-0" />
+                  </div>
+
+                  {/* Image Display */}
+                  <div className="relative flex-1 overflow-hidden bg-slate-950/40">
+                    <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+                      <motion.img
+                        key={activeImageIndex}
+                        src={project.images[activeImageIndex]}
+                        alt={`${project.title} screenshot ${activeImageIndex + 1}`}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </AnimatePresence>
+
+                    {/* Navigation Controls */}
+                    {project.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevImage}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-[#05070a]/70 border border-[#00d2ff]/20 text-[#00d2ff] hover:bg-[#00d2ff]/15 hover:border-[#00d2ff]/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                          aria-label="Previous image"
+                        >
+                          <ChevronLeft className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-[#05070a]/70 border border-[#00d2ff]/20 text-[#00d2ff] hover:bg-[#00d2ff]/15 hover:border-[#00d2ff]/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                          aria-label="Next image"
+                        >
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+
+                        {/* Dots Indicator */}
+                        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-[#05070a]/60 px-2 py-0.5 rounded border border-[#00d2ff]/5">
+                          {project.images.map((_, idx) => (
+                            <button
+                              key={idx}
+                              onClick={(e) => setIndex(idx, e)}
+                              className={`w-1 h-1 rounded-full transition-all cursor-pointer ${
+                                idx === activeImageIndex
+                                  ? "bg-[#00d2ff] scale-110 shadow-[0_0_4px_#00d2ff]"
+                                  : "bg-[#00d2ff]/30 hover:bg-[#00d2ff]/50"
+                              }`}
+                              aria-label={`Go to slide ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
+                {project.title}
+              </h3>
+              <p className="text-slate-100 text-xs md:text-sm leading-relaxed font-light">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-1.5">
+                {project.tech.map((t, idx) => (
+                  <span
+                    key={idx}
+                    className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
+              >
+                <span className="shuffle-text">View on GitHub</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function Projects() {
@@ -27,6 +218,11 @@ export default function Projects() {
       github: "https://github.com/azideu/uitm-step",
       fileSize: "142.4 KB",
       filePerms: "-rwx------",
+      images: [
+        "/portfolio/images/projects/step-home.png",
+        "/portfolio/images/projects/step-market.png",
+        "/portfolio/images/projects/step-chat.png",
+      ],
     },
     {
       id: "mainichi",
@@ -38,6 +234,11 @@ export default function Projects() {
       github: "https://github.com/azideu/Mainichi",
       fileSize: "88.9 KB",
       filePerms: "-rwx--x--x",
+      images: [
+        "/portfolio/images/projects/mainichi-homepage.png",
+        "/portfolio/images/projects/mainichi-flashcard.png",
+        "/portfolio/images/projects/mainichi-lessons.png",
+      ],
     },
     {
       id: "ecorevive",
@@ -118,58 +319,7 @@ export default function Projects() {
           {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             {featuredProjects.map((p) => (
-              <motion.div
-                key={p.id}
-                variants={cardVariants}
-                className="col-span-1 lg:col-span-6 flex flex-col"
-              >
-                <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
-                  <div className="tilt-card-inner h-full flex flex-col">
-                    {/* IDE Tab Header */}
-                    <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
-                      <span className="flex items-center gap-1.5">
-                        <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
-                        Featured: {p.title}
-                      </span>
-                      <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize} | {p.filePerms}</span>
-                    </div>
-
-                    {/* Editor Content Area */}
-                    <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-6">
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
-                          {p.title}
-                        </h3>
-                        <p className="text-slate-350 text-xs md:text-sm leading-relaxed font-light">
-                          {p.description}
-                        </p>
-                      </div>
-
-                      <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div className="flex flex-wrap gap-1.5">
-                          {p.tech.map((t, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                        <a
-                          href={p.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
-                        >
-                          <span className="shuffle-text">View on GitHub</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              <FeaturedProjectCard key={p.id} project={p} cardVariants={cardVariants} />
             ))}
           </div>
 
@@ -198,7 +348,7 @@ export default function Projects() {
 
                     <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-4">
                       <div>
-                        <p className="text-slate-400 text-xs font-light leading-relaxed">
+                        <p className="text-slate-100 text-xs font-light leading-relaxed">
                           {p.description}
                         </p>
                       </div>

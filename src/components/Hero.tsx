@@ -110,7 +110,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-base text-slate-350 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
+            className="text-sm md:text-base text-slate-100 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
           >
             I build responsive web interfaces, robust backend APIs, and desktop systems.
             Specializing in Java, PHP, JavaScript, and database design, and seeking software engineering internships or junior roles.

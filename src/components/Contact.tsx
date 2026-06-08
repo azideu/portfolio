@@ -150,7 +150,7 @@ export default function Contact() {
 
                 {/* Panel Content */}
                 <div className="p-5 md:p-6 flex flex-col items-center gap-6 text-center justify-center flex-1">
-                  <h3 className="text-xs md:text-sm text-slate-350 leading-relaxed max-w-md">
+                  <h3 className="text-xs md:text-sm text-slate-100 leading-relaxed max-w-md">
                     Feel free to reach out via email or connect on social media.
                   </h3>
 
@@ -209,7 +209,7 @@ export default function Contact() {
                       {social.bodyIcon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold text-slate-200 group-hover:text-[#00d2ff] transition-colors truncate">
+                      <p className="text-xs font-semibold text-slate-100 group-hover:text-[#00d2ff] transition-colors truncate">
                         {social.handle}
                       </p>
                     </div>

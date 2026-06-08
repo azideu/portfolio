@@ -107,7 +107,7 @@ export default function Experience() {
                       </div>
                     </div>
 
-                  <p className="text-slate-350 text-xs md:text-sm font-light leading-relaxed mb-6">
+                  <p className="text-slate-100 text-xs md:text-sm font-light leading-relaxed mb-6">
                     {item.description}
                   </p>
 
@@ -137,7 +137,7 @@ export default function Experience() {
                     </h4>
                     <ul className="list-none flex flex-col gap-2">
                       {item.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-xs text-slate-400 flex items-start gap-2">
+                        <li key={idx} className="text-xs text-slate-100 flex items-start gap-2">
                           <span className="text-[#00d2ff] mt-0.5">•</span>
                           <span>{highlight}</span>
                         </li>
