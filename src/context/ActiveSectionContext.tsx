@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 
-type SectionType = "hero" | "about" | "projects" | "experience" | "contact";
+type SectionType = "hero" | "about" | "projects" | "other-projects" | "experience" | "contact";
 
 interface ActiveSectionContextType {
   activeSection: SectionType;
@@ -14,6 +14,12 @@ const ActiveSectionContext = createContext<ActiveSectionContextType | undefined>
 
 export function ActiveSectionProvider({ children }: { children: React.ReactNode }) {
   const [activeSection, setActiveSection] = useState<SectionType>("hero");
+  const activeSectionRef = useRef<SectionType>(activeSection);
+
+  // Keep ref synced to avoid closure stale state in the keydown listener
+  useEffect(() => {
+    activeSectionRef.current = activeSection;
+  }, [activeSection]);
 
   const scrollToSection = (id: SectionType) => {
     const element = document.getElementById(id);
@@ -24,18 +30,18 @@ export function ActiveSectionProvider({ children }: { children: React.ReactNode 
   };
 
   useEffect(() => {
-    // We observe sections to dynamically update the active section based on scroll intersection
-    const sections: SectionType[] = ["hero", "about", "projects", "experience", "contact"];
+    const sections: SectionType[] = ["hero", "about", "projects", "other-projects", "experience", "contact"];
     const options = {
-      root: null, // relative to document viewport
-      rootMargin: "-45% 0px -45% 0px", // Trigger when section is in the middle of the viewport
+      root: null,
+      rootMargin: "-45% 0px -45% 0px",
       threshold: 0,
     };
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id as SectionType);
+          const id = entry.target.id;
+          setActiveSection(id as SectionType);
         }
       });
     };
@@ -49,11 +55,39 @@ export function ActiveSectionProvider({ children }: { children: React.ReactNode 
       }
     });
 
-    // Native scrollsnapchange fallback check
     const handleScrollSnapChange = (e: Event) => {
       const snappedTarget = (e as unknown as Record<string, unknown>).snapTargetBlock as HTMLElement | undefined;
-      if (snappedTarget && sections.includes(snappedTarget.id as SectionType)) {
-        setActiveSection(snappedTarget.id as SectionType);
+      if (snappedTarget) {
+        const id = snappedTarget.id;
+        if (sections.includes(id as SectionType)) {
+          setActiveSection(id as SectionType);
+        }
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const activeElement = document.activeElement;
+      if (
+        activeElement &&
+        (activeElement.tagName === "INPUT" ||
+          activeElement.tagName === "TEXTAREA" ||
+          (activeElement instanceof HTMLElement && activeElement.isContentEditable))
+      ) {
+        return;
+      }
+
+      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        const currentActive = activeSectionRef.current;
+        const currentIndex = sections.indexOf(currentActive);
+        if (currentIndex === -1) return;
+
+        if (e.key === "ArrowUp" && currentIndex > 0) {
+          e.preventDefault();
+          scrollToSection(sections[currentIndex - 1]);
+        } else if (e.key === "ArrowDown" && currentIndex < sections.length - 1) {
+          e.preventDefault();
+          scrollToSection(sections[currentIndex + 1]);
+        }
       }
     };
 
@@ -62,11 +96,14 @@ export function ActiveSectionProvider({ children }: { children: React.ReactNode 
       scrollContainer.addEventListener("scrollsnapchange", handleScrollSnapChange);
     }
 
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       observer.disconnect();
       if (scrollContainer) {
         scrollContainer.removeEventListener("scrollsnapchange", handleScrollSnapChange);
       }
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 

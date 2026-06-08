@@ -19,7 +19,7 @@ interface Project {
 
 interface FeaturedProjectCardProps {
   project: Project;
-  cardVariants: any;
+  cardVariants: Variants;
 }
 
 function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps) {
@@ -29,7 +29,7 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
     e.preventDefault();
     e.stopPropagation();
     if (!project.images) return;
-    setActiveImageIndex(([prevIndex, prevDir]) => [
+    setActiveImageIndex(([prevIndex]) => [
       (prevIndex + 1) % project.images!.length,
       1
     ]);
@@ -39,7 +39,7 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
     e.preventDefault();
     e.stopPropagation();
     if (!project.images) return;
-    setActiveImageIndex(([prevIndex, prevDir]) => [
+    setActiveImageIndex(([prevIndex]) => [
       (prevIndex - 1 + project.images!.length) % project.images!.length,
       -1
     ]);
@@ -48,7 +48,7 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
   const setIndex = (idx: number, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setActiveImageIndex(([prevIndex, prevDir]) => [
+    setActiveImageIndex(([prevIndex]) => [
       idx,
       idx > prevIndex ? 1 : -1
     ]);
@@ -293,95 +293,112 @@ export default function Projects() {
   } as const;
 
   return (
-    <section
-      id="projects"
-      className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
-    >
-      <div className="max-w-6xl w-full z-10 font-mono text-left">
-        {/* Section Heading */}
-        <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
-            02. Projects
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
-            Selected Works
-          </h2>
-        </div>
-
-        {/* Layout Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col gap-8"
-        >
-          {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {featuredProjects.map((p) => (
-              <FeaturedProjectCard key={p.id} project={p} cardVariants={cardVariants} />
-            ))}
+    <>
+      <section
+        id="projects"
+        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+      >
+        <div className="max-w-6xl w-full z-10 font-mono text-left">
+          {/* Section Heading */}
+          <div className="mb-10">
+            <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+              02. Projects
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+              Selected Works
+            </h2>
           </div>
 
-          {/* Secondary Projects Section */}
-          <div className="mt-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-450 mb-6 flex items-center gap-2">
-              <FolderDot className="w-4 h-4 text-[#00d2ff]" />
-              Other Projects
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {secondaryProjects.map((p) => (
-                <motion.div
-                  key={p.id}
-                  variants={cardVariants}
-                  className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col h-full tilt-card"
-                >
-                  <div className="tilt-card-inner h-full flex flex-col">
-                    <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
-                      <span className="flex items-center gap-1.5">
-                        <FolderDot className="w-3.5 h-3.5 text-[#00d2ff]" />
-                        {p.title}
-                      </span>
-                      <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize}</span>
-                    </div>
-
-                    <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-4">
-                      <div>
-                        <p className="text-slate-100 text-xs font-light leading-relaxed">
-                          {p.description}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center mt-auto">
-                        <div className="flex flex-wrap gap-1">
-                          {p.tech.map((t, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[9px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-1.5 py-0.5 rounded-sm"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                        <a
-                          href={p.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-[#00d2ff] p-1 transition-colors"
-                          aria-label="inspect source"
-                        >
-                          <Server className="w-4 h-4" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+          {/* Layout Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col gap-8"
+          >
+            {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {featuredProjects.map((p) => (
+                <FeaturedProjectCard key={p.id} project={p} cardVariants={cardVariants} />
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section
+        id="other-projects"
+        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+      >
+        <div className="max-w-6xl w-full z-10 font-mono text-left">
+          {/* Section Heading */}
+          <div className="mb-10">
+            <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+              02b. Archive
+            </span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+              Other Projects
+            </h2>
           </div>
-        </motion.div>
-      </div>
-    </section>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+          >
+            {secondaryProjects.map((p) => (
+              <motion.div
+                key={p.id}
+                variants={cardVariants}
+                className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col h-full tilt-card"
+              >
+                <div className="tilt-card-inner h-full flex flex-col">
+                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5">
+                      <FolderDot className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      {p.title}
+                    </span>
+                    <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize}</span>
+                  </div>
+
+                  <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-4">
+                    <div>
+                      <p className="text-slate-100 text-xs font-light leading-relaxed">
+                        {p.description}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center mt-auto">
+                      <div className="flex flex-wrap gap-1">
+                        {p.tech.map((t, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[9px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-1.5 py-0.5 rounded-sm"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-500 hover:text-[#00d2ff] p-1 transition-colors"
+                        aria-label="inspect source"
+                      >
+                        <Server className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

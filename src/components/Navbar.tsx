@@ -2,7 +2,7 @@
 
 import { useActiveSection } from "@/context/ActiveSectionContext";
 import { motion } from "framer-motion";
-import { Terminal, Menu, X } from "lucide-react";
+import { Terminal, Menu, X, FileDown } from "lucide-react";
 import { useState } from "react";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
@@ -61,7 +61,7 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-type SectionType = "hero" | "about" | "projects" | "experience" | "contact";
+type SectionType = "hero" | "about" | "projects" | "other-projects" | "experience" | "contact";
 
 export default function Navbar() {
   const { activeSection, scrollToSection } = useActiveSection();
@@ -90,7 +90,7 @@ export default function Navbar() {
         {/* Desktop Nav Items */}
         <nav aria-label="Navigation Links" className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
-            const isActive = activeSection === item.id;
+            const isActive = activeSection === item.id || (item.id === "projects" && activeSection === "other-projects");
             return (
               <button
                 key={item.id}
@@ -137,6 +137,16 @@ export default function Navbar() {
             <Instagram className="w-4.5 h-4.5" />
           </a>
           <div className="h-4 w-px bg-[#00d2ff]/10" />
+          <a
+            href="/portfolio/resume.pdf"
+            download="Addin_Zidane_Resume.pdf"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-[9px] font-mono text-[#05070a] bg-[#00d2ff] hover:bg-[#00d2ff]/90 transition-colors uppercase font-bold tracking-wider rounded-sm shadow-[0_0_10px_rgba(0,210,255,0.2)]"
+            aria-label="Download Resume"
+          >
+            <FileDown className="w-3.5 h-3.5" />
+            <span>Resume</span>
+          </a>
+          <div className="h-4 w-px bg-[#00d2ff]/10" />
           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
             status: active
           </span>
@@ -176,12 +186,20 @@ export default function Navbar() {
                 setMobileMenuOpen(false);
               }}
               className={`py-2 text-left text-sm ${
-                activeSection === item.id ? "text-[#00d2ff]" : "text-slate-450"
+                activeSection === item.id || (item.id === "projects" && activeSection === "other-projects") ? "text-[#00d2ff]" : "text-slate-450"
               }`}
             >
               {item.label}
             </button>
           ))}
+          <a
+            href="/portfolio/resume.pdf"
+            download="Addin_Zidane_Resume.pdf"
+            className="w-full text-center flex items-center justify-center gap-1.5 py-2.5 text-xs text-[#05070a] bg-[#00d2ff] hover:bg-[#00d2ff]/90 transition-colors uppercase font-bold tracking-wider rounded-sm mt-2"
+          >
+            <FileDown className="w-4 h-4" />
+            <span>Download Resume</span>
+          </a>
           <div className="flex items-center justify-between pt-4 border-t border-[#00d2ff]/5">
             <div className="flex gap-4">
               <a

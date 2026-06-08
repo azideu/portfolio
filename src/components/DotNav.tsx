@@ -2,7 +2,7 @@
 
 import { useActiveSection } from "@/context/ActiveSectionContext";
 
-type SectionType = "hero" | "about" | "projects" | "experience" | "contact";
+type SectionType = "hero" | "about" | "projects" | "other-projects" | "experience" | "contact";
 
 export default function DotNav() {
   const { activeSection, scrollToSection } = useActiveSection();
@@ -11,6 +11,7 @@ export default function DotNav() {
     { id: "hero", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "other-projects", label: "Archive" },
     { id: "experience", label: "Timeline" },
     { id: "contact", label: "Connect" },
   ];

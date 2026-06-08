@@ -2,7 +2,7 @@
 
 import { useActiveSection } from "@/context/ActiveSectionContext";
 import { motion } from "framer-motion";
-import { ChevronRight, Cpu } from "lucide-react";
+import { ChevronRight, Cpu, FileDown } from "lucide-react";
 import { InteractiveHoverButton } from "@/components/ui/InteractiveHoverButton";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
@@ -169,6 +169,15 @@ export default function Hero() {
             >
               <Instagram className="w-3.5 h-3.5" />
               <span className="font-mono text-[10px]">Instagram</span>
+            </a>
+            <a
+              href="/portfolio/resume.pdf"
+              download="Addin_Zidane_Resume.pdf"
+              className="text-[#00d2ff] hover:text-[#00d2ff] p-1.5 border border-[#00d2ff]/20 bg-[#00d2ff]/5 hover:bg-[#00d2ff]/10 hover:border-[#00d2ff]/40 rounded flex items-center gap-2 text-xs transition-all shadow-[0_0_10px_rgba(0,210,255,0.05)] hover:shadow-[0_0_15px_rgba(0,210,255,0.2)] ml-auto sm:ml-0"
+              aria-label="Download Resume"
+            >
+              <FileDown className="w-3.5 h-3.5" />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wider">Resume</span>
             </a>
           </motion.div>
         </motion.div>
