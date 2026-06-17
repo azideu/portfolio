@@ -4,10 +4,10 @@
   --font-sans: var(--font-space-mono), monospace;
   --font-display: var(--font-share-tech), monospace;
   
-  --color-accent-blue: #00d2ff;
-  --color-accent-blue-dim: rgba(0, 210, 255, 0.15);
-  --color-accent-amber: #ffb000;
-  --color-accent-cyan: #00f0ff;
+  --color-accent-blue: #ffffff;
+  --color-accent-blue-dim: rgba(255, 255, 255, 0.15);
+  --color-accent-amber: #ffffff;
+  --color-accent-cyan: #ffffff;
   
   --animate-cursor-blink: cursor-blink 1s steps(2, start) infinite;
   --animate-crt-flicker: crt-flicker 0.15s infinite;
@@ -26,9 +26,9 @@
 }
 
 :root {
-  --background: #05070a;
-  --foreground: #00d2ff;
-  --border-color: rgba(0, 210, 255, 0.12);
+  --background: #000000;
+  --foreground: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.12);
 }
 
 body {
@@ -36,20 +36,20 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  text-shadow: 0 0 2px rgba(0, 210, 255, 0.3);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 /* Monospace brutalist panels */
 .console-panel {
-  background: #080d14;
+  background: #0b0b0b;
   border: 1px solid var(--border-color);
-  box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.02);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.01);
 }
 
 .console-panel-glow {
-  background: #090e16;
-  border: 1px solid rgba(0, 210, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.05), inset 0 0 20px rgba(0, 210, 255, 0.03);
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.03), inset 0 0 20px rgba(255, 255, 255, 0.01);
 }
 
 /* Custom hide scrollbar and Snap */
@@ -70,7 +70,7 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03));
   z-index: 99999;
   background-size: 100% 4px, 6px 100%;
   pointer-events: none;
@@ -96,10 +96,10 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 0%; /* Brutalist square dots */
-  background: #00d2ff;
+  background: #ffffff;
   top: 8px;
   left: -5px;
-  box-shadow: 0 0 8px #00d2ff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 /* Code comments styling */
@@ -143,8 +143,8 @@ body {
 }
 .tilt-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 210, 255, 0.15), inset 0 0 15px rgba(0, 210, 255, 0.03);
-  border-color: rgba(0, 210, 255, 0.35) !important;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(255, 255, 255, 0.01);
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 .tilt-card-inner {
   /* Preserve layout wrapper compatibility */
@@ -167,8 +167,8 @@ body {
   bottom: 0;
   left: 0;
   height: 2px;
-  background: #00d2ff;
-  box-shadow: 0 0 8px #00d2ff;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   width: 0%;
   transition: width 0.1s ease-out;
 }

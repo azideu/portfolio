@@ -40,7 +40,7 @@ export default function RootLayout({
       className={`${shareTechMono.variable} ${spaceMono.variable} h-full antialiased dark`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="min-h-full bg-[#05070a] text-[#00d2ff] font-mono overflow-x-hidden selection:bg-[#00d2ff]/20 selection:text-white">
+      <body className="min-h-full bg-black text-white font-mono overflow-x-hidden selection:bg-white/20 selection:text-white">
         <div className="grain-overlay" />
         {children}
       </body>

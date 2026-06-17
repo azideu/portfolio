@@ -82,15 +82,15 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
       variants={cardVariants}
       className="col-span-1 lg:col-span-6 flex flex-col"
     >
-      <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+      <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
         <div className="tilt-card-inner h-full flex flex-col">
           {/* IDE Tab Header */}
-          <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+          <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
             <span className="flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
+              <Terminal className="w-3.5 h-3.5 text-white" />
               Featured: {project.title}
             </span>
-            <span className="text-[#00d2ff]/40 font-normal lowercase">
+            <span className="text-white/40 font-normal lowercase">
               {project.fileSize} | {project.filePerms}
             </span>
           </div>
@@ -100,17 +100,17 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
             <div>
               {/* Carousel if images are present */}
               {project.images && project.images.length > 0 && (
-                <div className="relative w-full aspect-[16/10] mb-5 bg-[#080d14] border border-[#00d2ff]/10 rounded overflow-hidden group/carousel flex flex-col">
+                <div className="relative w-full aspect-[16/10] mb-5 bg-[#0b0b0b] border border-white/10 rounded overflow-hidden group/carousel flex flex-col">
                   {/* Browser Tab Header */}
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-3 py-1.5 flex items-center justify-between">
+                  <div className="bg-[#161616] border-b border-white/10 px-3 py-1.5 flex items-center justify-between">
                     <div className="flex items-center gap-1 flex-shrink-0">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ef4444]/60" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#eab308]/60" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]/60" />
                     </div>
-                    <div className="flex-1 mx-4 bg-[#05070a] border border-[#00d2ff]/10 rounded px-2.5 py-0.5 text-[8px] text-slate-500 font-mono flex items-center justify-between max-w-[200px] md:max-w-[240px]">
+                    <div className="flex-1 mx-4 bg-black border border-white/10 rounded px-2.5 py-0.5 text-[8px] text-slate-500 font-mono flex items-center justify-between max-w-[200px] md:max-w-[240px]">
                       <span className="truncate">localhost:3000/{project.id}</span>
-                      <span className="text-[#00d2ff]/30 text-[7px] flex-shrink-0 ml-1 select-none">[preview]</span>
+                      <span className="text-white/30 text-[7px] flex-shrink-0 ml-1 select-none">[preview]</span>
                     </div>
                     <div className="w-6 flex-shrink-0" />
                   </div>
@@ -136,29 +136,29 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
                       <>
                         <button
                           onClick={prevImage}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-[#05070a]/70 border border-[#00d2ff]/20 text-[#00d2ff] hover:bg-[#00d2ff]/15 hover:border-[#00d2ff]/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-black/70 border border-white/20 text-white hover:bg-white/15 hover:border-white/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
                           aria-label="Previous image"
                         >
                           <ChevronLeft className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={nextImage}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-[#05070a]/70 border border-[#00d2ff]/20 text-[#00d2ff] hover:bg-[#00d2ff]/15 hover:border-[#00d2ff]/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-sm bg-black/70 border border-white/20 text-white hover:bg-white/15 hover:border-white/40 transition-colors opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 z-10 cursor-pointer"
                           aria-label="Next image"
                         >
                           <ChevronRight className="w-3.5 h-3.5" />
                         </button>
 
                         {/* Dots Indicator */}
-                        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-[#05070a]/60 px-2 py-0.5 rounded border border-[#00d2ff]/5">
+                        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/60 px-2 py-0.5 rounded border border-white/5">
                           {project.images.map((_, idx) => (
                             <button
                               key={idx}
                               onClick={(e) => setIndex(idx, e)}
                               className={`w-1 h-1 rounded-full transition-all cursor-pointer ${
                                 idx === activeImageIndex
-                                  ? "bg-[#00d2ff] scale-110 shadow-[0_0_4px_#00d2ff]"
-                                  : "bg-[#00d2ff]/30 hover:bg-[#00d2ff]/50"
+                                  ? "bg-white scale-110 shadow-[0_0_4px_rgba(255,255,255,0.8)]"
+                                  : "bg-white/30 hover:bg-white/50"
                               }`}
                               aria-label={`Go to slide ${idx + 1}`}
                             />
@@ -170,7 +170,7 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
                 </div>
               )}
 
-              <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-[#00d2ff] transition-colors shuffle-text">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-slate-200 mb-2 hover:text-white transition-colors shuffle-text">
                 {project.title}
               </h3>
               <p className="text-slate-100 text-xs md:text-sm leading-relaxed font-light">
@@ -178,12 +178,12 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[#00d2ff]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="text-[10px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-0.5"
+                    className="text-[10px] font-mono text-slate-300 bg-white/5 border border-white/10 px-2 py-0.5"
                   >
                     {t}
                   </span>
@@ -193,7 +193,7 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-[#05070a] bg-[#00d2ff] uppercase font-bold hover:bg-[#00d2ff]/90 transition-colors self-start sm:self-auto"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] text-black bg-white uppercase font-bold hover:bg-white/90 transition-colors self-start sm:self-auto"
               >
                 <span className="shuffle-text">View on GitHub</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -301,7 +301,7 @@ export default function Projects() {
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}
           <div className="mb-10">
-            <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+            <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
               02. Projects
             </span>
             <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
@@ -334,7 +334,7 @@ export default function Projects() {
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}
           <div className="mb-10">
-            <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+            <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
               02b. Archive
             </span>
             <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
@@ -353,15 +353,15 @@ export default function Projects() {
               <motion.div
                 key={p.id}
                 variants={cardVariants}
-                className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col h-full tilt-card"
+                className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex flex-col h-full tilt-card"
               >
                 <div className="tilt-card-inner h-full flex flex-col">
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                  <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
-                      <FolderDot className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      <FolderDot className="w-3.5 h-3.5 text-white" />
                       {p.title}
                     </span>
-                    <span className="text-[#00d2ff]/40 font-normal lowercase">{p.fileSize}</span>
+                    <span className="text-white/40 font-normal lowercase">{p.fileSize}</span>
                   </div>
 
                   <div className="p-5 md:p-6 flex-1 flex flex-col justify-between gap-4">
@@ -371,12 +371,12 @@ export default function Projects() {
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#00d2ff]/5 justify-between items-center mt-auto">
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/5 justify-between items-center mt-auto">
                       <div className="flex flex-wrap gap-1">
                         {p.tech.map((t, idx) => (
                           <span
                             key={idx}
-                            className="text-[9px] font-mono text-slate-300 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-1.5 py-0.5 rounded-sm"
+                            className="text-[9px] font-mono text-slate-300 bg-white/5 border border-white/10 px-1.5 py-0.5 rounded-sm"
                           >
                             {t}
                           </span>
@@ -386,7 +386,7 @@ export default function Projects() {
                         href={p.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-500 hover:text-[#00d2ff] p-1 transition-colors"
+                        className="text-slate-500 hover:text-white p-1 transition-colors"
                         aria-label="inspect source"
                       >
                         <Server className="w-4 h-4" />

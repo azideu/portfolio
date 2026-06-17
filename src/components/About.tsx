@@ -24,19 +24,19 @@ export default function About() {
   const skillGroups = [
     {
       title: "Languages",
-      icon: <Code2 className="w-4 h-4 text-[#00d2ff]" />,
+      icon: <Code2 className="w-4 h-4 text-white" />,
       skills: ["Java", "PHP", "JavaScript", "SQL", "C# (.NET)", "C++", "Python"],
       branch: "Programming Languages",
     },
     {
       title: "Web Development",
-      icon: <Server className="w-4 h-4 text-[#00d2ff]" />,
+      icon: <Server className="w-4 h-4 text-white" />,
       skills: ["HTML5", "CSS3", "React.js", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "MySQL", "PostgreSQL"],
       branch: "Web Stack (Frontend & Backend)",
     },
     {
       title: "UI/UX & Design",
-      icon: <Layout className="w-4 h-4 text-[#00d2ff]" />,
+      icon: <Layout className="w-4 h-4 text-white" />,
       skills: [
         "React",
         "Vite",
@@ -50,7 +50,7 @@ export default function About() {
     },
     {
       title: "Tools & Envs",
-      icon: <Settings className="w-4 h-4 text-[#00d2ff]" />,
+      icon: <Settings className="w-4 h-4 text-white" />,
       skills: ["macOS / Unix Development", "Git versioning"],
       branch: "Development Tools",
     },
@@ -70,7 +70,7 @@ export default function About() {
       <div className="max-w-6xl w-full z-10 font-mono text-left">
         {/* Section Heading */}
         <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+          <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
             01. Background
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
@@ -90,14 +90,14 @@ export default function About() {
             variants={cardVariants}
             className="col-span-1 md:col-span-2 lg:col-span-8 flex flex-col"
           >
-            <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+            <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
               <div className="tilt-card-inner h-full flex flex-col">
-                <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                   <span className="flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-[#00d2ff]" />
+                    <Terminal className="w-3.5 h-3.5 text-white" />
                     Profile Summary
                   </span>
-                  <span className="text-[#00d2ff]/40 font-normal">read_time: 1min</span>
+                  <span className="text-white/40 font-normal">read_time: 1min</span>
                 </div>
                 <div className="p-5 md:p-6 text-xs md:text-sm text-slate-100 leading-relaxed font-light flex flex-col gap-4 flex-1 justify-center">
                   <p>
@@ -116,21 +116,21 @@ export default function About() {
             variants={cardVariants}
             className="col-span-1 md:col-span-2 lg:col-span-4 flex flex-col"
           >
-            <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+            <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
               <div className="tilt-card-inner h-full flex flex-col">
-                <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                   <span className="flex items-center gap-1.5">
-                    <Languages className="w-3.5 h-3.5 text-[#00d2ff]" />
+                    <Languages className="w-3.5 h-3.5 text-white" />
                     Spoken Languages
                   </span>
-                  <span className="text-[#00d2ff]/40 font-normal">locales</span>
+                  <span className="text-white/40 font-normal">locales</span>
                 </div>
                 <div className="p-5 md:p-6 flex flex-col justify-center gap-3 flex-1">
                   <div className="flex flex-col gap-3 font-mono text-xs">
                     {languages.map((lang, index) => (
-                      <div key={index} className="flex justify-between items-center border-b border-[#00d2ff]/5 pb-2 last:border-0 last:pb-0">
+                      <div key={index} className="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
                         <span className="text-slate-100">{lang.name}</span>
-                        <span className="text-[#00d2ff] font-mono font-bold bg-[#00d2ff]/5 border border-[#00d2ff]/20 px-2 py-0.5 rounded">
+                        <span className="text-white font-mono font-bold bg-white/5 border border-white/20 px-2 py-0.5 rounded">
                           {lang.level}
                         </span>
                       </div>
@@ -148,24 +148,24 @@ export default function About() {
               variants={cardVariants}
               className="col-span-1 md:col-span-1 lg:col-span-6 flex flex-col"
             >
-              <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex-1 flex flex-col tilt-card">
+              <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
                 <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                  <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
                       {group.icon}
                       {group.title}
                     </span>
-                    <span className="text-[#00d2ff]/40 font-normal lowercase">{group.branch}</span>
+                    <span className="text-white/40 font-normal lowercase">{group.branch}</span>
                   </div>
                   
                   {/* Content */}
                   <div className="p-5 md:p-6 flex-1 flex flex-col justify-center">
                     <ul className="flex flex-wrap gap-2">
-                      {group.skills.map((skill, idx) => (
+                       {group.skills.map((skill, idx) => (
                         <li
                           key={idx}
-                          className="text-[11px] font-mono text-[#00d2ff] bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2.5 py-1 hover:bg-[#00d2ff]/10 hover:border-[#00d2ff]/30 transition-all cursor-pointer rounded-sm"
+                          className="text-[11px] font-mono text-white bg-white/5 border border-white/10 px-2.5 py-1 hover:bg-white/10 hover:border-white/30 transition-all cursor-pointer rounded-sm"
                         >
                           {skill}
                         </li>

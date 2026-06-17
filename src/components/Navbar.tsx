@@ -76,12 +76,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#05070a]/90 backdrop-blur-md border-b border-[#00d2ff]/10 py-3.5">
+    <header className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 py-3.5">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => scrollToSection("hero")}
-          className="flex items-center gap-1.5 font-display font-bold text-sm tracking-wider text-[#00d2ff] transition-opacity hover:opacity-85"
+          className="flex items-center gap-1.5 font-display font-bold text-sm tracking-wider text-white transition-opacity hover:opacity-85"
         >
           <Terminal className="w-4 h-4" />
           <span className="shuffle-text">ADDIN</span>
@@ -97,7 +97,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-4 py-1.5 text-xs font-mono tracking-wide transition-colors ${
                   isActive 
-                    ? "text-[#00d2ff] bg-[#00d2ff]/5 border border-[#00d2ff]/30" 
+                    ? "text-white bg-white/5 border border-white/30" 
                     : "text-slate-400 hover:text-slate-200 border border-transparent"
                 }`}
               >
@@ -113,7 +113,7 @@ export default function Navbar() {
             href="https://github.com/azideu/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-[#00d2ff] transition-colors p-1"
+            className="text-slate-500 hover:text-white transition-colors p-1"
             aria-label="GitHub Profile"
           >
             <Github className="w-4.5 h-4.5" />
@@ -122,7 +122,7 @@ export default function Navbar() {
             href="https://www.linkedin.com/in/addinzidane/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-[#00d2ff] transition-colors p-1"
+            className="text-slate-500 hover:text-white transition-colors p-1"
             aria-label="LinkedIn Profile"
           >
             <Linkedin className="w-4.5 h-4.5" />
@@ -131,26 +131,26 @@ export default function Navbar() {
             href="https://www.instagram.com/azideu/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-[#00d2ff] transition-colors p-1"
+            className="text-slate-500 hover:text-white transition-colors p-1"
             aria-label="Instagram Profile"
           >
             <Instagram className="w-4.5 h-4.5" />
           </a>
-          <div className="h-4 w-px bg-[#00d2ff]/10" />
+          <div className="h-4 w-px bg-white/10" />
           <a
             href="/portfolio/resume.pdf"
             download="Addin_Zidane_Resume.pdf"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-[9px] font-mono text-[#05070a] bg-[#00d2ff] hover:bg-[#00d2ff]/90 transition-colors uppercase font-bold tracking-wider rounded-sm shadow-[0_0_10px_rgba(0,210,255,0.2)]"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-[9px] font-mono text-black bg-white hover:bg-white/90 transition-colors uppercase font-bold tracking-wider rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.15)]"
             aria-label="Download Resume"
           >
             <FileDown className="w-3.5 h-3.5" />
             <span>Resume</span>
           </a>
-          <div className="h-4 w-px bg-[#00d2ff]/10" />
+          <div className="h-4 w-px bg-white/10" />
           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
             status: active
           </span>
-          <span id="scroll-progress-pct" className="text-[10px] font-mono text-[#00d2ff]/80 tracking-widest ml-2">
+          <span id="scroll-progress-pct" className="text-[10px] font-mono text-white/80 tracking-widest ml-2">
             [0%]
           </span>
         </div>
@@ -159,7 +159,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4 md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-slate-400 hover:text-[#00d2ff] bg-[#070b10] rounded border border-[#00d2ff]/10"
+            className="p-1.5 text-slate-400 hover:text-white bg-[#0a0a0c] rounded border border-white/10"
             aria-label="Toggle navigation directory"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -176,7 +176,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="absolute top-full left-0 w-full bg-[#05070a] border-b border-[#00d2ff]/10 flex flex-col p-6 gap-3 md:hidden font-mono"
+          className="absolute top-full left-0 w-full bg-black border-b border-white/10 flex flex-col p-6 gap-3 md:hidden font-mono"
         >
           {navItems.map((item) => (
             <button
@@ -186,7 +186,7 @@ export default function Navbar() {
                 setMobileMenuOpen(false);
               }}
               className={`py-2 text-left text-sm ${
-                activeSection === item.id || (item.id === "projects" && activeSection === "other-projects") ? "text-[#00d2ff]" : "text-slate-450"
+                activeSection === item.id || (item.id === "projects" && activeSection === "other-projects") ? "text-white" : "text-slate-450"
               }`}
             >
               {item.label}
@@ -195,18 +195,18 @@ export default function Navbar() {
           <a
             href="/portfolio/resume.pdf"
             download="Addin_Zidane_Resume.pdf"
-            className="w-full text-center flex items-center justify-center gap-1.5 py-2.5 text-xs text-[#05070a] bg-[#00d2ff] hover:bg-[#00d2ff]/90 transition-colors uppercase font-bold tracking-wider rounded-sm mt-2"
+            className="w-full text-center flex items-center justify-center gap-1.5 py-2.5 text-xs text-black bg-white hover:bg-white/90 transition-colors uppercase font-bold tracking-wider rounded-sm mt-2"
           >
             <FileDown className="w-4 h-4" />
             <span>Download Resume</span>
           </a>
-          <div className="flex items-center justify-between pt-4 border-t border-[#00d2ff]/5">
+          <div className="flex items-center justify-between pt-4 border-t border-white/5">
             <div className="flex gap-4">
               <a
                 href="https://github.com/azideu/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-450 hover:text-[#00d2ff] transition-colors"
+                className="text-slate-450 hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
@@ -215,7 +215,7 @@ export default function Navbar() {
                 href="https://www.linkedin.com/in/addinzidane/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-450 hover:text-[#00d2ff] transition-colors"
+                className="text-slate-450 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
@@ -224,7 +224,7 @@ export default function Navbar() {
                 href="https://www.instagram.com/azideu/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-450 hover:text-[#00d2ff] transition-colors"
+                className="text-slate-450 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />

@@ -96,21 +96,21 @@ export default function Hero() {
         >
 
           <motion.div variants={itemVariants} className="flex items-center gap-2 text-slate-500 text-sm">
-            <Cpu className="w-4 h-4 text-[#00d2ff]" />
+            <Cpu className="w-4 h-4 text-white" />
             <span>Software Engineer | Seeking Internships & Junior Roles</span>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <div className="flex items-baseline gap-2">
               <h1 className="text-4xl md:text-7xl font-display font-bold tracking-tight text-slate-100 uppercase">
-                Hi, I&apos;m <span className="text-[#00d2ff] text-glow-violet shuffle-text">Addin Zidane.</span>
+                Hi, I&apos;m <span className="text-white text-glow-violet shuffle-text">Addin Zidane.</span>
               </h1>
             </div>
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-base text-slate-100 leading-relaxed font-mono max-w-2xl border-l-2 border-[#00d2ff]/20 pl-4 py-1"
+            className="text-sm md:text-base text-slate-100 leading-relaxed font-mono max-w-2xl border-l-2 border-white/20 pl-4 py-1"
           >
             I build responsive web interfaces, robust backend APIs, and desktop systems.
             Specializing in Java, PHP, JavaScript, and database design, and seeking software engineering internships or junior roles.
@@ -124,27 +124,27 @@ export default function Hero() {
             <InteractiveHoverButton
               onClick={() => scrollToSection("projects")}
               arrowIcon={<ChevronRight className="w-3.5 h-3.5" />}
-              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.15)] hover:shadow-[0_0_25px_rgba(0,210,255,0.3)] transition-all"
+              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(255,255,255,0.03)] hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all"
             >
               View My Work
             </InteractiveHoverButton>
 
             <InteractiveHoverButton
               onClick={() => scrollToSection("contact")}
-              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(0,210,255,0.05)] hover:shadow-[0_0_25px_rgba(0,210,255,0.15)] transition-all"
+              className="px-5 py-3 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(255,255,255,0.02)] hover:shadow-[0_0_25px_rgba(255,255,255,0.08)] transition-all"
             >
               Get In Touch
             </InteractiveHoverButton>
           </motion.div>
 
           {/* Bottom links */}
-          <motion.div variants={itemVariants} className="flex items-center gap-5 mt-6 border-t border-[#00d2ff]/5 pt-6">
+          <motion.div variants={itemVariants} className="flex items-center gap-5 mt-6 border-t border-white/5 pt-6">
             <span className="text-[9px] text-slate-600 uppercase tracking-widest font-bold">Connect:</span>
             <a
               href="https://github.com/azideu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              className="text-slate-400 hover:text-white p-1.5 border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/25 rounded flex items-center gap-2 text-xs transition-colors"
               aria-label="GitHub Profile"
             >
               <Github className="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/addinzidane/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              className="text-slate-400 hover:text-white p-1.5 border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/25 rounded flex items-center gap-2 text-xs transition-colors"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-3.5 h-3.5" />
@@ -164,7 +164,7 @@ export default function Hero() {
               href="https://www.instagram.com/azideu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-[#00d2ff] p-1.5 border border-white/5 bg-[#080d14]/40 hover:border-[#00d2ff]/25 rounded flex items-center gap-2 text-xs transition-colors"
+              className="text-slate-400 hover:text-white p-1.5 border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/25 rounded flex items-center gap-2 text-xs transition-colors"
               aria-label="Instagram Profile"
             >
               <Instagram className="w-3.5 h-3.5" />
@@ -173,7 +173,7 @@ export default function Hero() {
             <a
               href="/portfolio/resume.pdf"
               download="Addin_Zidane_Resume.pdf"
-              className="text-[#00d2ff] hover:text-[#00d2ff] p-1.5 border border-[#00d2ff]/20 bg-[#00d2ff]/5 hover:bg-[#00d2ff]/10 hover:border-[#00d2ff]/40 rounded flex items-center gap-2 text-xs transition-all shadow-[0_0_10px_rgba(0,210,255,0.05)] hover:shadow-[0_0_15px_rgba(0,210,255,0.2)] ml-auto sm:ml-0"
+              className="text-white hover:text-white p-1.5 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 rounded flex items-center gap-2 text-xs transition-all shadow-[0_0_10px_rgba(255,255,255,0.03)] hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] ml-auto sm:ml-0"
               aria-label="Download Resume"
             >
               <FileDown className="w-3.5 h-3.5" />
@@ -185,11 +185,11 @@ export default function Hero() {
 
       {/* Floating scroll trigger */}
       <div
-        className="absolute bottom-8 flex flex-col items-center cursor-pointer text-slate-600 hover:text-[#00d2ff] transition-colors hidden md:flex"
+        className="absolute bottom-8 flex flex-col items-center cursor-pointer text-slate-600 hover:text-white transition-colors hidden md:flex"
         onClick={() => scrollToSection("about")}
       >
         <span className="text-[9px] uppercase tracking-widest mb-1.5 font-mono">Scroll to Explore</span>
-        <span className="w-1.5 h-1.5 bg-[#00d2ff] animate-pulse" />
+        <span className="w-1.5 h-1.5 bg-white animate-pulse" />
       </div>
     </section>
   );

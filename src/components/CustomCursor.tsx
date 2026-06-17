@@ -83,7 +83,7 @@ export default function CustomCursor() {
     >
       {/* Blinking terminal block */}
       <motion.div
-        className="w-2.5 h-4.5 bg-[#00d2ff] shadow-[0_0_8px_rgba(0,210,255,0.8)]"
+        className="w-2.5 h-4.5 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
         animate={{
           opacity: isHovered ? [0.4, 0.9, 0.4] : [1, 0, 1],
           scaleY: isHovered ? 0.3 : 1,
@@ -97,7 +97,7 @@ export default function CustomCursor() {
       />
       {/* Dynamic console coordinates display (very retro CS!) */}
       {isHovered && (
-        <span className="ml-2 text-[9px] text-[#00d2ff]/80 font-mono tracking-tighter bg-[#05070a]/90 px-1 border border-[#00d2ff]/20">
+        <span className="ml-2 text-[9px] text-white/80 font-mono tracking-tighter bg-black/90 px-1 border border-white/20">
           SELECT
         </span>
       )}

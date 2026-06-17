@@ -52,7 +52,7 @@ export default function Experience() {
       <div className="max-w-4xl w-full z-10 font-mono text-left">
         {/* Section Heading */}
         <div className="mb-12">
-          <span className="text-xs uppercase tracking-widest text-[#00d2ff]/60 font-mono block mb-1">
+          <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
             03. Timeline
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
@@ -65,7 +65,7 @@ export default function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="relative border-l border-[#00d2ff]/20 pl-6 md:pl-10 ml-3 flex flex-col gap-10"
+          className="relative border-l border-white/20 pl-6 md:pl-10 ml-3 flex flex-col gap-10"
         >
           {educationTimeline.map((item, index) => (
             <motion.div
@@ -74,34 +74,34 @@ export default function Experience() {
               className="relative group"
             >
               {/* Timeline Indicator Dot */}
-              <div className="absolute -left-[30px] md:-left-[46px] top-1.5 p-1 bg-[#05070a] border border-[#00d2ff]/40 text-[#00d2ff] shadow-[0_0_8px_rgba(0,210,255,0.2)] group-hover:border-[#00d2ff] group-hover:shadow-[0_0_12px_rgba(0,210,255,0.4)] transition-all duration-300">
+              <div className="absolute -left-[30px] md:-left-[46px] top-1.5 p-1 bg-black border border-white/40 text-white shadow-[0_0_8px_rgba(255,255,255,0.15)] group-hover:border-white group-hover:shadow-[0_0_12px_rgba(255,255,255,0.3)] transition-all duration-300">
                 <GitCommit className="w-3.5 h-3.5 md:w-4 md:h-4" />
               </div>
 
               {/* Console Card */}
-              <div className="console-panel rounded-lg overflow-hidden border border-[#00d2ff]/10 hover:border-[#00d2ff]/40 transition-colors flex flex-col tilt-card">
+              <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex flex-col tilt-card">
                 <div className="tilt-card-inner h-full flex flex-col">
                   {/* IDE Tab Header */}
-                  <div className="bg-[#0b131f] border-b border-[#00d2ff]/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
+                  <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      <BookOpen className="w-3.5 h-3.5 text-white" />
                       Education Log
                     </span>
-                    <span className="text-[#00d2ff]/40 font-normal lowercase">{item.commitId}</span>
+                    <span className="text-white/40 font-normal lowercase">{item.commitId}</span>
                   </div>
 
                   {/* Content */}
                   <div className="p-5 md:p-6 flex-1">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                       <div>
-                        <h3 className="text-lg md:text-xl font-display font-bold text-slate-200 group-hover:text-[#00d2ff] transition-colors shuffle-text">
+                        <h3 className="text-lg md:text-xl font-display font-bold text-slate-200 group-hover:text-white transition-colors shuffle-text">
                           {item.degree}
                         </h3>
                         <p className="text-xs text-slate-400">
                           {item.institution}
                         </p>
                       </div>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00d2ff]/5 border border-[#00d2ff]/20 rounded text-[10px] text-[#00d2ff] font-mono self-start md:self-center font-bold">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/20 rounded text-[10px] text-white font-mono self-start md:self-center font-bold">
                         <Calendar className="w-3 h-3" />
                         <span>{item.period}</span>
                       </div>
@@ -114,14 +114,14 @@ export default function Experience() {
                   {/* Coursework details */}
                   <div className="mb-6">
                     <h4 className="text-[10px] uppercase font-bold tracking-wider text-slate-300 mb-3 flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      <BookOpen className="w-3.5 h-3.5 text-white" />
                       Key Coursework Focus:
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {item.courses.map((course, idx) => (
                         <span
                           key={idx}
-                          className="text-[10px] font-mono text-[#00d2ff]/90 bg-[#00d2ff]/5 border border-[#00d2ff]/10 px-2 py-1 rounded"
+                          className="text-[10px] font-mono text-white/90 bg-white/5 border border-white/10 px-2 py-1 rounded"
                         >
                           {course}
                         </span>
@@ -132,13 +132,13 @@ export default function Experience() {
                   {/* Milestones log */}
                   <div>
                     <h4 className="text-[10px] uppercase font-bold tracking-wider text-slate-300 mb-3 flex items-center gap-1.5">
-                      <GitMerge className="w-3.5 h-3.5 text-[#00d2ff]" />
+                      <GitMerge className="w-3.5 h-3.5 text-white" />
                       Academic Highlights:
                     </h4>
                     <ul className="list-none flex flex-col gap-2">
                       {item.highlights.map((highlight, idx) => (
                         <li key={idx} className="text-xs text-slate-100 flex items-start gap-2">
-                          <span className="text-[#00d2ff] mt-0.5">•</span>
+                          <span className="text-white mt-0.5">•</span>
                           <span>{highlight}</span>
                         </li>
                       ))}
