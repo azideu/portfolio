@@ -97,7 +97,7 @@ export default function Hero() {
 
           <motion.div variants={itemVariants} className="flex items-center gap-2 text-slate-500 text-sm">
             <Cpu className="w-4 h-4 text-[#00d2ff]" />
-            <span>Software Engineer | Full-Stack Developer | Seeking Internships</span>
+            <span>Software Engineer | Seeking Internships & Junior Roles</span>
           </motion.div>
 
           <motion.div variants={itemVariants}>

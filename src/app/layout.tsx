@@ -17,13 +17,13 @@ const spaceMono = Space_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Addin Zidane | Software Engineer & Full-Stack Developer",
-  description: "Software engineer and full-stack developer portfolio of Addin Zidane. Specializing in responsive React/Next.js frontends, backend APIs, Java desktop applications, and relational databases.",
+  title: "Addin Zidane | Software Engineer",
+  description: "Software engineer portfolio of Addin Zidane. Specializing in responsive React/Next.js frontends, backend APIs, Java desktop applications, and relational databases.",
   authors: [{ name: "Addin Zidane" }],
-  keywords: ["software engineer", "full-stack developer", "junior developer", "react", "nextjs", "java", "php", "developer portfolio"],
+  keywords: ["software engineer", "junior developer", "react", "nextjs", "java", "php", "developer portfolio"],
   openGraph: {
-    title: "Addin Zidane | Software Engineer & Full-Stack Developer",
-    description: "Software engineer and full-stack developer portfolio workspace displaying software projects, skills, and credentials.",
+    title: "Addin Zidane | Software Engineer",
+    description: "Software engineer portfolio workspace displaying software projects, skills, and credentials.",
     type: "website",
     locale: "en_US",
   },
