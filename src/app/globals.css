@@ -25,6 +25,19 @@
   100% { opacity: 0.99; }
 }
 
+/* Ambient background glow pulse */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.012; transform: scale(1) translate(0, 0); }
+  33%       { opacity: 0.035; transform: scale(1.06) translate(1%, -1%); }
+  66%       { opacity: 0.02;  transform: scale(0.97) translate(-1%, 2%); }
+}
+
+@keyframes glowPulseAlt {
+  0%, 100% { opacity: 0.012; transform: scale(1) translate(0, 0); }
+  33%       { opacity: 0.022; transform: scale(0.96) translate(-2%, 1%); }
+  66%       { opacity: 0.04;  transform: scale(1.08) translate(2%, -2%); }
+}
+
 :root {
   --background: #000000;
   --foreground: #ffffff;
@@ -89,6 +102,16 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* Ambient glow blobs */
+.glow-blob-tl {
+  animation: glowPulse 9s ease-in-out infinite;
+}
+
+.glow-blob-br {
+  animation: glowPulseAlt 11s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
 /* Line branch dot styling */
 .branch-dot::after {
   content: '';
@@ -138,12 +161,12 @@ body {
 
 /* Subtle flat lift & neon border glow hover animations */
 .tilt-card {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: transform, box-shadow, border-color;
 }
 .tilt-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(255, 255, 255, 0.01);
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.07), 0 4px 10px rgba(255, 255, 255, 0.04), inset 0 0 20px rgba(255, 255, 255, 0.01);
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 .tilt-card-inner {
@@ -172,3 +195,23 @@ body {
   width: 0%;
   transition: width 0.1s ease-out;
 }
+
+/* Rolling Code Log infinite scroll animation */
+@keyframes scrollUpLoop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.rolling-log-container {
+  animation: scrollUpLoop 30s linear infinite;
+  will-change: transform;
+}
+
+.rolling-log-container:hover {
+  animation-play-state: paused;
+}
+

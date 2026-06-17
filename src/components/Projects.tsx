@@ -80,6 +80,8 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
   return (
     <motion.div
       variants={cardVariants}
+      whileHover={{ scale: 1.012, y: -5 }}
+      transition={{ type: "spring", stiffness: 380, damping: 26 }}
       className="col-span-1 lg:col-span-6 flex flex-col"
     >
       <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
@@ -288,8 +290,18 @@ export default function Projects() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "tween", duration: 0.35 },
+      transition: { type: "spring", damping: 22, stiffness: 110 },
     },
+  } as const;
+
+  const headingVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  } as const;
+
+  const headingItemVariants = {
+    hidden: { y: 12, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", damping: 20, stiffness: 120 } },
   } as const;
 
   return (
@@ -300,21 +312,33 @@ export default function Projects() {
       >
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}
-          <div className="mb-10">
-            <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
+          <motion.div
+            className="mb-10"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.span
+              variants={headingItemVariants}
+              className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1"
+            >
               02. Projects
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+            </motion.span>
+            <motion.h2
+              variants={headingItemVariants}
+              className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight"
+            >
               Selected Works
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
 
           {/* Layout Grid */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             className="flex flex-col gap-8"
           >
             {/* Asymmetric Featured Projects Layout styled as Editor Windows */}
@@ -333,26 +357,40 @@ export default function Projects() {
       >
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}
-          <div className="mb-10">
-            <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
+          <motion.div
+            className="mb-10"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.span
+              variants={headingItemVariants}
+              className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1"
+            >
               02b. Archive
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+            </motion.span>
+            <motion.h2
+              variants={headingItemVariants}
+              className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight"
+            >
               Other Projects
-            </h2>
-          </div>
+            </motion.h2>
+          </motion.div>
 
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
           >
             {secondaryProjects.map((p) => (
               <motion.div
                 key={p.id}
                 variants={cardVariants}
+                whileHover={{ scale: 1.015, y: -4 }}
+                transition={{ type: "spring", stiffness: 380, damping: 26 }}
                 className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex flex-col h-full tilt-card"
               >
                 <div className="tilt-card-inner h-full flex flex-col">

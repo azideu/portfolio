@@ -13,12 +13,22 @@ export default function About() {
   } as const;
 
   const cardVariants = {
-    hidden: { y: 15, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "tween", duration: 0.3 },
+      transition: { type: "spring", damping: 22, stiffness: 110 },
     },
+  } as const;
+
+  const headingVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  } as const;
+
+  const headingItemVariants = {
+    hidden: { y: 12, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", damping: 20, stiffness: 120 } },
   } as const;
 
   const skillGroups = [
@@ -69,20 +79,32 @@ export default function About() {
     >
       <div className="max-w-6xl w-full z-10 font-mono text-left">
         {/* Section Heading */}
-        <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
+        <motion.div
+          className="mb-10"
+          variants={headingVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.span
+            variants={headingItemVariants}
+            className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1"
+          >
             01. Background
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+          </motion.span>
+          <motion.h2
+            variants={headingItemVariants}
+            className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight"
+          >
             About Me
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch"
         >
           {/* Profile Panel */}

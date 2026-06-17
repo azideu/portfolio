@@ -1,7 +1,7 @@
 "use client";
 
 import { useActiveSection } from "@/context/ActiveSectionContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Menu, X, FileDown } from "lucide-react";
 import { useState } from "react";
 
@@ -76,7 +76,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 py-3.5">
+    <motion.header
+      className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 py-3.5"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+    >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <button
@@ -89,12 +94,15 @@ export default function Navbar() {
 
         {/* Desktop Nav Items */}
         <nav aria-label="Navigation Links" className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             const isActive = activeSection === item.id || (item.id === "projects" && activeSection === "other-projects");
             return (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 + index * 0.06 }}
                 className={`relative px-4 py-1.5 text-xs font-mono tracking-wide transition-colors ${
                   isActive 
                     ? "text-white bg-white/5 border border-white/30" 
@@ -102,7 +110,7 @@ export default function Navbar() {
                 }`}
               >
                 <span className="shuffle-text">{item.path}</span>
-              </button>
+              </motion.button>
             );
           })}
         </nav>
@@ -171,11 +179,13 @@ export default function Navbar() {
       <div id="scroll-progress-line" />
 
       {/* Mobile Drawer menu */}
+      <AnimatePresence>
       {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="absolute top-full left-0 w-full bg-black border-b border-white/10 flex flex-col p-6 gap-3 md:hidden font-mono"
         >
           {navItems.map((item) => (
@@ -236,6 +246,7 @@ export default function Navbar() {
           </div>
         </motion.div>
       )}
-    </header>
+      </AnimatePresence>
+    </motion.header>
   );
 }

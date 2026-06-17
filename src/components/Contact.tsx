@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { InteractiveHoverButton } from "@/components/ui/InteractiveHoverButton";
@@ -84,8 +84,18 @@ export default function Contact() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "tween", duration: 0.35 },
+      transition: { type: "spring", damping: 22, stiffness: 110 },
     },
+  } as const;
+
+  const headingVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  } as const;
+
+  const headingItemVariants = {
+    hidden: { y: 12, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", damping: 20, stiffness: 120 } },
   } as const;
 
   const socials = [
@@ -119,20 +129,32 @@ export default function Contact() {
     >
       <div className="max-w-4xl w-full z-10 text-center font-mono">
         {/* Section Heading */}
-        <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1">
+        <motion.div
+          className="mb-10"
+          variants={headingVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.span
+            variants={headingItemVariants}
+            className="text-xs uppercase tracking-widest text-white/60 font-mono block mb-1"
+          >
             04. Connect
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight">
+          </motion.span>
+          <motion.h2
+            variants={headingItemVariants}
+            className="text-3xl md:text-5xl font-display font-bold text-slate-100 uppercase tracking-tight"
+          >
             Get In Touch
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="flex flex-col items-center gap-6"
         >
           {/* Brutalist Console Terminal box */}
@@ -167,7 +189,20 @@ export default function Contact() {
 
                     <InteractiveHoverButton
                       onClick={copyToClipboard}
-                      icon={copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      icon={
+                        <AnimatePresence mode="wait" initial={false}>
+                          <motion.span
+                            key={copied ? "check" : "copy"}
+                            initial={{ scale: 0, rotate: -90, opacity: 0 }}
+                            animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                            exit={{ scale: 0, rotate: 90, opacity: 0 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            style={{ display: "inline-flex" }}
+                          >
+                            {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                          </motion.span>
+                        </AnimatePresence>
+                      }
                       arrowIcon={copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                       shuffle={!copied}
                       className="hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_15px_rgba(255,255,255,0.03)] hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all"
@@ -186,11 +221,13 @@ export default function Contact() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-2xl justify-center"
           >
             {socials.map((social, idx) => (
-              <a
+              <motion.a
                 key={idx}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ y: -4, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 380, damping: 26 }}
                 className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex flex-col group tilt-card"
               >
                 <div className="tilt-card-inner h-full flex flex-col">
@@ -216,7 +253,7 @@ export default function Contact() {
                     <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors ml-auto flex-shrink-0" />
                   </div>
                 </div>
-              </a>
+              </motion.a>
             ))}
           </motion.div>
         </motion.div>
