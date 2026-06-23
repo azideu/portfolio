@@ -162,7 +162,6 @@ body {
 /* Subtle flat lift & neon border glow hover animations */
 .tilt-card {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  will-change: transform, box-shadow, border-color;
 }
 .tilt-card:hover {
   transform: translateY(-5px) scale(1.01);
@@ -173,15 +172,12 @@ body {
   /* Preserve layout wrapper compatibility */
 }
 
-/* Scroll reveals with clean fade & slide */
+/* scroll-reveal: sections are always visible, content reveals via Framer Motion */
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
 }
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Dynamic Navbar Scroll Progress line */

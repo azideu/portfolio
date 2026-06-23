@@ -13,9 +13,8 @@ export default function About() {
   } as const;
 
   const cardVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      y: 0,
       opacity: 1,
       transition: { type: "spring", damping: 22, stiffness: 110 },
     },

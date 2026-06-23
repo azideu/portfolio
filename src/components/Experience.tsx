@@ -46,10 +46,9 @@ export default function Experience() {
   } as const;
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      x: 0,
       transition: { type: "spring", damping: 22, stiffness: 100 },
     },
   } as const;

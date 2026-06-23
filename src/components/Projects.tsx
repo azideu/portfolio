@@ -80,8 +80,6 @@ function FeaturedProjectCard({ project, cardVariants }: FeaturedProjectCardProps
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ scale: 1.012, y: -5 }}
-      transition={{ type: "spring", stiffness: 380, damping: 26 }}
       className="col-span-1 lg:col-span-6 flex flex-col"
     >
       <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
@@ -286,9 +284,8 @@ export default function Projects() {
   } as const;
 
   const cardVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      y: 0,
       opacity: 1,
       transition: { type: "spring", damping: 22, stiffness: 110 },
     },
@@ -389,11 +386,10 @@ export default function Projects() {
               <motion.div
                 key={p.id}
                 variants={cardVariants}
-                whileHover={{ scale: 1.015, y: -4 }}
-                transition={{ type: "spring", stiffness: 380, damping: 26 }}
-                className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex flex-col h-full tilt-card"
+                className="col-span-1 flex flex-col"
               >
-                <div className="tilt-card-inner h-full flex flex-col">
+                <div className="console-panel rounded-lg overflow-hidden border border-white/10 hover:border-white/40 transition-colors flex-1 flex flex-col tilt-card">
+                  <div className="tilt-card-inner h-full flex flex-col">
                   <div className="bg-[#161616] border-b border-white/10 px-4 py-2 flex items-center justify-between text-[10px] text-slate-450 font-bold uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
                       <FolderDot className="w-3.5 h-3.5 text-white" />
@@ -430,6 +426,7 @@ export default function Projects() {
                         <Server className="w-4 h-4" />
                       </a>
                     </div>
+                  </div>
                   </div>
                 </div>
               </motion.div>
