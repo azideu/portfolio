@@ -172,13 +172,7 @@ body {
   /* Preserve layout wrapper compatibility */
 }
 
-/* scroll-reveal: sections are always visible, content reveals via Framer Motion */
-.scroll-reveal {
-  opacity: 1;
-}
-.scroll-reveal.revealed {
-  opacity: 1;
-}
+
 
 /* Dynamic Navbar Scroll Progress line */
 #scroll-progress-line {

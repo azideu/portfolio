@@ -1,6 +1,7 @@
 "use client";
 
 import { useActiveSection } from "@/context/ActiveSectionContext";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Menu, X, FileDown } from "lucide-react";
 import { useState } from "react";
@@ -66,6 +67,7 @@ type SectionType = "hero" | "about" | "projects" | "other-projects" | "experienc
 export default function Navbar() {
   const { activeSection, scrollToSection } = useActiveSection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const scrollPercent = useScrollProgress();
 
   const navItems: { label: string; path: string; id: SectionType }[] = [
     { label: "Home", path: "Home", id: "hero" },
@@ -159,7 +161,7 @@ export default function Navbar() {
             status: active
           </span>
           <span id="scroll-progress-pct" className="text-[10px] font-mono text-white/80 tracking-widest ml-2">
-            [0%]
+            [{Math.round(scrollPercent)}%]
           </span>
         </div>
 
@@ -176,7 +178,7 @@ export default function Navbar() {
       </div>
 
       {/* Dynamic bottom progress line */}
-      <div id="scroll-progress-line" />
+      <div id="scroll-progress-line" style={{ width: `${scrollPercent}%` }} />
 
       {/* Mobile Drawer menu */}
       <AnimatePresence>

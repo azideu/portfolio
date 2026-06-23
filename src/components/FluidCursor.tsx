@@ -39,7 +39,7 @@ export default function FluidCursor() {
       PRESSURE_ITERATIONS: 20,
       CURL: 6,
       SPLAT_RADIUS: 0.22,
-      SPLAT_FORCE: 6000,
+      SPLAT_FORCE: 4000,
       SHADING: true,
       COLOR_UPDATE_SPEED: 10,
       BACK_COLOR: { r: 0.0, g: 0.0, b: 0.0 },
@@ -885,7 +885,7 @@ export default function FluidCursor() {
     }
 
     updateKeywords();
-    
+
     // Initial creation of double FBOs
     const simRes = getResolution(config.SIM_RESOLUTION);
     const dyeRes = getResolution(config.DYE_RESOLUTION);
@@ -894,7 +894,7 @@ export default function FluidCursor() {
     const rg = ext.formatRG;
     const r = ext.formatR;
     const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
-    
+
     dye = createDoubleFBO(dyeRes.width, dyeRes.height, rgba.internalFormat, rgba.format, texType, filtering);
     velocity = createDoubleFBO(simRes.width, simRes.height, rg.internalFormat, rg.format, texType, filtering);
     divergence = createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, gl.NEAREST);

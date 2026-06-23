@@ -8,12 +8,12 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import BackgroundEffect from "@/components/BackgroundEffect";
 import FluidCursor from "@/components/FluidCursor";
-import ScrollEffects from "@/components/ScrollEffects";
+import DecryptionEffect from "@/components/DecryptionEffect";
 
 export default function Home() {
   return (
     <ActiveSectionProvider>
-      <ScrollEffects />
+      <DecryptionEffect />
       {/* Visual background layers */}
       <BackgroundEffect />
       

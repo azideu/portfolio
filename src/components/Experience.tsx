@@ -56,7 +56,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+      className="snap-section flex flex-col justify-center items-center px-6 py-20 relative"
     >
       <div className="max-w-4xl w-full z-10 font-mono text-left">
         {/* Section Heading */}

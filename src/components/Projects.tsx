@@ -305,7 +305,7 @@ export default function Projects() {
     <>
       <section
         id="projects"
-        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative"
       >
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}
@@ -350,7 +350,7 @@ export default function Projects() {
 
       <section
         id="other-projects"
-        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+        className="snap-section flex flex-col justify-center items-center px-6 py-20 relative"
       >
         <div className="max-w-6xl w-full z-10 font-mono text-left">
           {/* Section Heading */}

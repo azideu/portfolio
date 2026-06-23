@@ -124,7 +124,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="snap-section flex flex-col justify-center items-center px-6 py-20 relative scroll-reveal"
+      className="snap-section flex flex-col justify-center items-center px-6 py-20 relative"
     >
       <div className="max-w-4xl w-full z-10 text-center font-mono">
         {/* Section Heading */}

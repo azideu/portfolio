@@ -149,7 +149,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="snap-section flex flex-col justify-center items-center px-6 relative scroll-reveal py-12 md:py-0"
+      className="snap-section flex flex-col justify-center items-center px-6 relative py-12 md:py-0"
     >
       <div className="max-w-6xl w-full z-10 font-mono text-left">
         <motion.div
@@ -258,14 +258,20 @@ export default function Hero() {
           </div>
 
           {/* Divider Column - Rolling logs */}
-          <div className="hidden lg:block lg:col-span-1 h-[380px] w-full">
+          <motion.div
+            variants={itemVariants}
+            className="hidden lg:block lg:col-span-1 h-[380px] w-full"
+          >
             <RollingCodeLog />
-          </div>
+          </motion.div>
 
           {/* Right Column - Interactive 4D ASCII Tesseract */}
-          <div className="flex justify-center items-center lg:col-span-4 w-full">
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center items-center lg:col-span-4 w-full"
+          >
             <AsciiTesseract />
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
