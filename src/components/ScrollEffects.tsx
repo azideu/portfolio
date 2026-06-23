@@ -38,15 +38,27 @@ export default function ScrollEffects() {
         const scrollHeight = $container[0].scrollHeight || 0;
         const containerHeight = $container.height() || 0;
         
-        const docHeight = scrollHeight - containerHeight;
-        const scrollPercent = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        let scrollPercent = 0;
+        // If snap-container is scrollable (has scrollable overflow height)
+        if (scrollHeight > containerHeight && containerHeight > 0) {
+          const docHeight = scrollHeight - containerHeight;
+          scrollPercent = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        } else {
+          // Fallback to window scroll when container is auto-height (e.g. mobile/small heights)
+          const winScroll = $(window).scrollTop() || 0;
+          const winHeight = $(window).height() || 0;
+          const bodyHeight = $(document).height() || 0;
+          const docHeight = bodyHeight - winHeight;
+          scrollPercent = docHeight > 0 ? Math.min((winScroll / docHeight) * 100, 100) : 0;
+        }
 
         $("#scroll-progress-line").css("width", `${scrollPercent}%`);
         $("#scroll-progress-pct").text(`[${Math.round(scrollPercent)}%]`);
       };
 
-      // Bind scroll event to the snap-container
+      // Bind scroll event to the snap-container and window
       $container.on("scroll", handleScroll);
+      $(window).on("scroll", handleScroll);
 
       // Shuffling text decrypt on hover
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*";
@@ -97,6 +109,7 @@ export default function ScrollEffects() {
     return () => {
       if ($instance) {
         $instance(".snap-container").off("scroll");
+        $instance(window).off("scroll");
         $instance(document).off("mouseenter", ".shuffle-text");
       }
     };
